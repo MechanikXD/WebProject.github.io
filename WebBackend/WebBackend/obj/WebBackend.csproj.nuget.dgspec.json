@@ -39,6 +39,7 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+<<<<<<< HEAD
           "dependencies": {
             "BCrypt.Net-Next": {
               "target": "Package",
@@ -89,6 +90,8 @@
               "version": "[8.1.1, )"
             }
           },
+=======
+>>>>>>> 7210146 (Create empty backend project)
           "imports": [
             "net461",
             "net462",
@@ -101,14 +104,21 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+<<<<<<< HEAD
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+=======
+>>>>>>> 7210146 (Create empty backend project)
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+>>>>>>> 7210146 (Create empty backend project)
         }
       }
     }

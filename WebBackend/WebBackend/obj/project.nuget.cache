@@ -1,5 +1,6 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "OjSsAHXzbnMcBsvqCDoYG7Gt5dPpRS1WSnAiDgdW3kys62rgv5mwZBBaQOdsmHnCIAOL3eWDEX+4eQzcFd57Jw==",
   "success": true,
   "projectFilePath": "D:\\WebProject\\WebBackend\\WebBackend\\WebBackend.csproj",
@@ -66,5 +67,11 @@
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512"
   ],
+=======
+  "dgSpecHash": "uix6tCa1rv2bzSZabV1ZKhxHzvHDYGef1POhIoSAGVTdIXqd4RGt/GUAdrVbdfKmJhdLKyEKIgavJ+IjhsdGXg==",
+  "success": true,
+  "projectFilePath": "D:\\WebProject\\WebBackend\\WebBackend\\WebBackend.csproj",
+  "expectedPackageFiles": [],
+>>>>>>> 7210146 (Create empty backend project)
   "logs": []
 }

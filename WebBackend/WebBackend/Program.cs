@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿namespace WebBackend;
 
 using System.Text;
@@ -106,3 +107,6 @@ public class Startup(IConfiguration configuration) {
         app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
     }
 }
+=======
+﻿
+>>>>>>> 7210146 (Create empty backend project)

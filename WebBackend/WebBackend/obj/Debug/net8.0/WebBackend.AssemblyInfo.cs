@@ -13,7 +13,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5821ea7e863276b3e528bcb166993140526d9520")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abb77ee4e2add76f5f0957a02862efc65315618d")]
+>>>>>>> 7210146 (Create empty backend project)
 [assembly: System.Reflection.AssemblyProductAttribute("WebBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
