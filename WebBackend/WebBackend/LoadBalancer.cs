@@ -1,4 +1,4 @@
-﻿namespace WebBackend;
+﻿namespace WebBackend.Balancer;
 
 using System;
 using System.Net;
