@@ -48,5 +48,12 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+<<<<<<< HEAD
 >>>>>>> 7210146 (Create empty backend project)
+=======
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    </ItemGroup>
+
+>>>>>>> 0acab59 (Add basic load balancer and solver)
 </Project>
