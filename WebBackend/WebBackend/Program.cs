@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿namespace WebBackend;
 
 using System.Text;
@@ -85,11 +86,52 @@ public class Startup(IConfiguration configuration) {
                     builder.AllowAnyOrigin()
                            .AllowAnyMethod()
                            .AllowAnyHeader();
+=======
+﻿namespace WebBackend;
+
+using System.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Context;
+using Balancer;
+
+public class Startup(IConfiguration configuration) {
+    public IConfiguration Configuration { get; } = configuration;
+
+    public static void Main(string[] args) {
+        ConfigureServices(new ServiceCollection());
+        var loadBalancer = new LoadBalancer();
+        loadBalancer.Run();
+        CreateHostBuilder(["5001", "5002", "5003"]).Build().Run();
+    }
+    
+    public static void ConfigureServices(IServiceCollection services) {
+        const string dbConnectionString = "Host=localhost;Port=5432;Database=WebProject;Username=postgres;Password=qwsdcvgtrfmlg;";
+
+        services.AddDbContext<SolutionContext>(options => options.UseNpgsql(new SqlConnection(dbConnectionString)));
+        services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll",
+                builder =>
+                {
+                    builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+>>>>>>> ea3faf1 (Create Config and Startup methods to run servers)
                 });
         });
         services.AddControllers();
     }
 
+<<<<<<< HEAD
+=======
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            });
+
+>>>>>>> ea3faf1 (Create Config and Startup methods to run servers)
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
         if (env.IsDevelopment()) {
             app.UseDeveloperExceptionPage();
@@ -99,6 +141,7 @@ public class Startup(IConfiguration configuration) {
             app.UseHsts();
         }
         app.UseHttpsRedirection();
+<<<<<<< HEAD
         app.UseRouting();
         app.UseCors("AllowAll");
         app.UseStaticFiles();
@@ -110,3 +153,12 @@ public class Startup(IConfiguration configuration) {
 =======
 ﻿
 >>>>>>> 7210146 (Create empty backend project)
+=======
+        app.UseCors("AllowAll");
+        app.UseStaticFiles();
+        app.UseRouting();
+        app.UseAuthorization();
+        app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+    }
+}
+>>>>>>> ea3faf1 (Create Config and Startup methods to run servers)
