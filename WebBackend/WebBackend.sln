@@ -1,10 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 <<<<<<< HEAD
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBackend", "WebBackend\WebBackend.csproj", "{EECF0A01-7E47-4FAA-81E7-C5292AB74301}"
 =======
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBackend", "WebBackend\WebBackend.csproj", "{3BA68F94-73C8-450E-8921-53E38370CD15}"
 >>>>>>> 7210146 (Create empty backend project)
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBackend", "WebBackend\WebBackend.csproj", "{EECF0A01-7E47-4FAA-81E7-C5292AB74301}"
+>>>>>>> 2227da6 (Move project to Web application type)
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,15 +17,21 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2227da6 (Move project to Web application type)
 		{EECF0A01-7E47-4FAA-81E7-C5292AB74301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EECF0A01-7E47-4FAA-81E7-C5292AB74301}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EECF0A01-7E47-4FAA-81E7-C5292AB74301}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EECF0A01-7E47-4FAA-81E7-C5292AB74301}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 =======
 		{3BA68F94-73C8-450E-8921-53E38370CD15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3BA68F94-73C8-450E-8921-53E38370CD15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BA68F94-73C8-450E-8921-53E38370CD15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BA68F94-73C8-450E-8921-53E38370CD15}.Release|Any CPU.Build.0 = Release|Any CPU
 >>>>>>> 7210146 (Create empty backend project)
+=======
+>>>>>>> 2227da6 (Move project to Web application type)
 	EndGlobalSection
 EndGlobal

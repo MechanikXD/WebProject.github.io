@@ -93,9 +93,25 @@
 >>>>>>> 7210146 (Create empty backend project)
 =======
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc.Core": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[2.2.5, )"
+              "version": "[9.0.0-rc.1.24451.1, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.0-rc.1.24431.7, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0-rc.1.24431.7, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.0-rc.1, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.6, )"
             }
           },
 >>>>>>> 0acab59 (Add basic load balancer and solver)
@@ -112,11 +128,17 @@
           "warn": true,
           "frameworkReferences": {
 <<<<<<< HEAD
+<<<<<<< HEAD
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
 =======
 >>>>>>> 7210146 (Create empty backend project)
+=======
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+>>>>>>> 2227da6 (Move project to Web application type)
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

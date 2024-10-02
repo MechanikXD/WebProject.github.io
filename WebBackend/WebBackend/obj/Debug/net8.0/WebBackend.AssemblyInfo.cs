@@ -15,6 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5821ea7e863276b3e528bcb166993140526d9520")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abb77ee4e2add76f5f0957a02862efc65315618d")]
@@ -22,6 +23,9 @@ using System.Reflection;
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+721014691d4d848bc57fcb72d923c8d2ce18dc13")]
 >>>>>>> 0acab59 (Add basic load balancer and solver)
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa2fa5c9e0f962a3fa9793286bc2e7934b0e0e9b")]
+>>>>>>> 2227da6 (Move project to Web application type)
 [assembly: System.Reflection.AssemblyProductAttribute("WebBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
