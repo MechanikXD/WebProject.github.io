@@ -21,69 +21,106 @@ function setupForm() {
     document.getElementById('setup-form').style.display = 'none';
     document.getElementById('solver-form').style.display = 'block';
 }
-/*
-function solve() {
-    const numEqs = parseInt(document.getElementById('num-eqs').value);
-    const numVars = parseInt(document.getElementById('num-vars').value);
-    const coefficients = [];
-    const constants = [];
 
-    // Gather coefficients and constants from the form
-    for (let i = 0; i < numEqs; i++) {
-        const rowCoeffs = [];
-        for (let j = 0; j < numVars; j++) {
-            rowCoeffs.push(parseFloat(document.querySelector(`input[data-eq="${i}"][data-var="${j}"]`).value) || 0);
-        }
-        coefficients.push(rowCoeffs);
-        constants.push(parseFloat(document.querySelector(`input[data-eq="${i}"].const`).value) || 0);
-    }
-
-    // Solve the system using a basic method for demonstration
-    // This method assumes that the number of equations equals the number of variables
-    if (numEqs !== numVars) {
-        document.getElementById('solution').textContent = 'The number of equations must equal the number of variables.';
-        return;
-    }
-
-    const result = gaussJordan(coefficients, constants);
-    document.getElementById('solution').textContent = result ? result.join(', ') : 'No unique solution or no solution.';
+function getdMatrixFromHtmL() {
+    const matrix = [];
+  
+    // Select all inputs with the class 'coef' (coefficients for the matrix)
+    const coefInputs = document.querySelectorAll('input.coef');
+  
+    // Organize coefficients into the matrix array
+    coefInputs.forEach(input => {
+      const eqIndex = parseInt(input.getAttribute('data-eq'));  // Get equation index
+      const varIndex = parseInt(input.getAttribute('data-var'));  // Get variable index
+      const value = parseFloat(input.value);  // Convert the input value to a number
+  
+      // Initialize the row if it doesn't exist
+      if (!matrix[eqIndex]) {
+        matrix[eqIndex] = [];
+      }
+      
+      // Add the coefficient to the appropriate row and column
+      matrix[eqIndex][varIndex] = value;
+    });
+  
+    // Select all inputs with the class 'const' (constants on the right side)
+    const constInputs = document.querySelectorAll('input.const');
+  
+    // Append constants to the end of each row in the matrix
+    constInputs.forEach(input => {
+      const eqIndex = parseInt(input.getAttribute('data-eq'));  // Get equation index
+      const value = parseFloat(input.value);  // Convert the input value to a number
+  
+      // Add the constant as the last column in the row
+      matrix[eqIndex].push(value);
+    });
+  
+    console.log('Augmented Matrix:', matrix);
+    
+    return matrix;
 }
-*/
 
-/*
-function gaussJordan(a, b) {
-    const n = a.length;
-    const x = new Array(n).fill(0);
-    const aug = a.map((row, i) => row.concat(b[i]));
+async function sendMatrixAndGetId(matrix) {
+    loadBalancerUrl = "http://localhost:8080/";
+    try {
+        // Send a POST request to the load balancer to solve the matrix
+        const response = await fetch(`${loadBalancerUrl}/solve`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: matrixToString(matrix), // Send the matrix as a string
+        });
 
-    for (let i = 0; i < n; i++) {
-        let maxRow = i;
-        for (let k = i + 1; k < n; k++) {
-            if (Math.abs(aug[k][i]) > Math.abs(aug[maxRow][i])) {
-                maxRow = k;
-            }
+        if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
         }
-        if (aug[maxRow][i] === 0) return null; // No unique solution
 
-        // Swap rows
-        [aug[i], aug[maxRow]] = [aug[maxRow], aug[i]];
+        // Get the unique SolutionId from the response
+        const data = await response.json();
+        const resultId = data.id;
 
-        // Make leading coefficient 1 and eliminate column
-        for (let j = i + 1; j < n; j++) {
-            const ratio = aug[j][i] / aug[i][i];
-            for (let k = i; k < n + 1; k++) {
-                aug[j][k] -= ratio * aug[i][k];
-            }
-        }
+        console.log('Solution ID received:', resultId);
+
+        // Now use the SolutionId to retrieve the result from the database
+        const result = await getResultFromDatabase(resultId);
+        console.log('Solution from the database:', result);
+    } catch (error) {
+        console.error('Failed to send matrix or retrieve result:', error);
     }
-
-    // Back substitution
-    for (let i = n - 1; i >= 0; i--) {
-        x[i] = aug[i][n] / aug[i][i];
-        for (let j = 0; j < i; j++) {
-            aug[j][n] -= aug[j][i] * x[i];
-        }
-    }
-    return x;
 }
-*/
+
+async function getResultFromDatabase(resultId) {
+    try {
+      // Send a GET request to the load balancer to retrieve the result
+      const response = await fetch(`${loadBalancerUrl}/result/${resultId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+  
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+  
+      // Get the result from the database
+      const resultData = await response.json();
+      return resultData;
+    } catch (error) {
+      console.error('Failed to retrieve result from the database:', error);
+    }
+}
+
+function matrixToString(matrix) {
+    return matrix
+      .map(row => row.join(', ')) // Join each row's elements with a comma and space
+      .join('\n'); // Join each row with a newline character
+}
+
+function solve(){
+    sendMatrixAndGetId(getdMatrixFromHtmL());
+}
