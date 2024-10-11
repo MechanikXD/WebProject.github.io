@@ -1,22 +1,25 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace WebBackend.Models;
 
 using Microsoft.EntityFrameworkCore;
 
-public record SolveRequest(double[][] Matrix, int? UserId);
+public record SolveRequest(double[][] Matrix, string? UserToken);
 public record SolveResponse(double[] Solution);
 
 public class SavedSolutions {
-    private int SolutionId { get; set; }
-    public int FkClientId { get; set; }
-    public string SolutionMatrix { get; set; } 
-    public string SolutionResult { get; set; }
-    public int SolutionMatrixLength { get; set; }
+    [Key]
+    public int solutionid { get; set; }
+    public int fkclientid { get; set; }
+    public string solutionmatrix { get; set; } 
+    public string solutionresult { get; set; }
+    public int solutionmatrixlength { get; set; }
 }
-
 public class Client {
-    public int ClientId { get; set; }
-    public string ClientUserName { get; set; }
-    public string ClientPassword { get; set; }
+    [Key]
+    public int clientid { get; set; }
+    public string clientusername { get; set; }
+    public string clientpassword { get; set; }
 }
 
 public class DbSolutionContext(DbContextOptions<DbSolutionContext> options) : DbContext(options) {
@@ -26,9 +29,8 @@ public class DbSolutionContext(DbContextOptions<DbSolutionContext> options) : Db
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);
 
-        // Example configuration: if your table names are different than the model names
-        modelBuilder.Entity<SavedSolutions>().ToTable("SavedSolution", "public");
-        modelBuilder.Entity<Client>().ToTable("Client", "public");
+        modelBuilder.Entity<SavedSolutions>().ToTable("savedsolutions", "public");
+        modelBuilder.Entity<Client>().ToTable("client", "public");
     }
 }
 
