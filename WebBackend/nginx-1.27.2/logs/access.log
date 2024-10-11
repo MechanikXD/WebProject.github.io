@@ -58,6 +58,7 @@
 127.0.0.1 - - [10/Oct/2024:17:09:00 +0300] "POST /server/solve HTTP/1.1" 500 5092 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"
 127.0.0.1 - - [10/Oct/2024:17:15:30 +0300] "OPTIONS /server/solve HTTP/1.1" 204 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"
 127.0.0.1 - - [10/Oct/2024:17:15:30 +0300] "POST /server/solve HTTP/1.1" 200 30 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"
+<<<<<<< HEAD
 127.0.0.1 - - [11/Oct/2024:12:07:43 +0300] "OPTIONS /server/register HTTP/1.1" 204 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"
 127.0.0.1 - - [11/Oct/2024:12:07:44 +0300] "POST /server/register HTTP/1.1" 500 10160 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"
 127.0.0.1 - - [11/Oct/2024:12:15:23 +0300] "OPTIONS /server/register HTTP/1.1" 204 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"
@@ -506,3 +507,5 @@
 127.0.0.1 - - [16/Oct/2024:10:37:01 +0300] "DELETE /server/delete HTTP/1.1" 200 23 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"
 127.0.0.1 - - [16/Oct/2024:10:37:01 +0300] "OPTIONS /server/history HTTP/1.1" 204 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"
 127.0.0.1 - - [16/Oct/2024:10:37:01 +0300] "GET /server/history HTTP/1.1" 200 272 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"
+=======
+>>>>>>> 933dc1f (Implement nginx)
