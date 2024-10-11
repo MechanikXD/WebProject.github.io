@@ -17,9 +17,12 @@ D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\Microsoft.EntityFrameworkCo
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
 >>>>>>> 2227da6 (Move project to Web application type)
+=======
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\Microsoft.Extensions.Configuration.dll
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
@@ -33,9 +36,12 @@ D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\Npgsql.dll
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\System.Data.SqlClient.dll
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
 >>>>>>> 2227da6 (Move project to Web application type)
+=======
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
@@ -59,6 +65,9 @@ D:\WebProject\WebBackend\WebBackend\obj\Debug\net8.0\WebBackend.pdb
 D:\WebProject\WebBackend\WebBackend\obj\Debug\net8.0\WebBackend.genruntimeconfig.cache
 D:\WebProject\WebBackend\WebBackend\obj\Debug\net8.0\ref\WebBackend.dll
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\BCrypt.Net-Next.dll
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\JWT.dll
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
@@ -138,5 +147,8 @@ D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.W
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\WebProject\WebBackend\WebBackend\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+<<<<<<< HEAD
 =======
 >>>>>>> 2227da6 (Move project to Web application type)
+=======
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)

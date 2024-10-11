@@ -27,6 +27,7 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+<<<<<<< HEAD
       <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.0-rc.1.24431.7" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0-rc.1.24431.7" />
       <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.1.1" />
@@ -63,10 +64,18 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0-rc.1.24451.1" />
+=======
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
       <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.0-rc.1.24431.7" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0-rc.1.24431.7" />
-      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.0-rc.1" />
+      <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.1.1" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.8" />
       <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="DbContext.cs" />
     </ItemGroup>
 
 >>>>>>> 0acab59 (Add basic load balancer and solver)

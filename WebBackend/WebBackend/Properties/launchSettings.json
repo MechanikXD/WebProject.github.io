@@ -35,6 +35,9 @@
         }
       },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
       "LoadBalancer": {
         "commandName": "Project",
         "launchBrowser": true,
@@ -44,18 +47,23 @@
         }
       },
       "Server1": {
+<<<<<<< HEAD
         "commandName": "Project",
 =======
       "Server5001": {
         "commandName": "Project",
         "dotnetRunMessages": true,
 >>>>>>> 2227da6 (Move project to Web application type)
+=======
+        "commandName": "Project",
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
         "launchBrowser": true,
         "applicationUrl": "http://localhost:5001",
         "environmentVariables": {
           "ASPNETCORE_ENVIRONMENT": "Development"
         }
       },
+<<<<<<< HEAD
 <<<<<<< HEAD
       "Server2": {
         "commandName": "Project",
@@ -64,11 +72,16 @@
         "commandName": "Project",
         "dotnetRunMessages": true,
 >>>>>>> 2227da6 (Move project to Web application type)
+=======
+      "Server2": {
+        "commandName": "Project",
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
         "launchBrowser": true,
         "applicationUrl": "http://localhost:5002",
         "environmentVariables": {
           "ASPNETCORE_ENVIRONMENT": "Development"
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
       }
     }
@@ -87,3 +100,8 @@
     }
   }
 >>>>>>> 2227da6 (Move project to Web application type)
+=======
+      }
+    }
+}
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)

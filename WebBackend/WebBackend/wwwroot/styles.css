@@ -53,7 +53,10 @@ button {
     background-color: #28a745;
     color: white;
     border: none;
+<<<<<<< HEAD
     margin: 20px;
+=======
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -66,6 +69,7 @@ button:hover {
 #result {
     margin-top: 20px;
 }
+<<<<<<< HEAD
 
 table {
     width: 100%;
@@ -144,3 +148,5 @@ th:nth-child(4), td:nth-child(4) {
 .fade-out {
     opacity: 0;
 }
+=======
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)

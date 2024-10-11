@@ -22,10 +22,13 @@
     },
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
       "Id": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\history.html",
       "PackagePath": "staticwebassets\\history.html"
     },
     {
+=======
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
       "Id": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
@@ -42,8 +45,11 @@
       "PackagePath": "staticwebassets\\styles.css"
     },
     {
+<<<<<<< HEAD
 =======
 >>>>>>> 2227da6 (Move project to Web application type)
+=======
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.WebBackend.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

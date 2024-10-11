@@ -1,10 +1,14 @@
 {
   "Version": 1,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "Hash": "4qlM1p9WwJa3r9UqxQ3SPykwMkEPRv0Te21aPTmrbLs=",
 =======
   "Hash": "AuNDJoO0+YiVnipLeTbGGPHtL6DM3G6nd/zG/CdzlDs=",
 >>>>>>> 2227da6 (Move project to Web application type)
+=======
+  "Hash": "+vqKavYn8vqyvJ7RQjX93P3c2BSnDz9EltdkSjWseG0=",
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
   "Source": "WebBackend",
   "BasePath": "_content/WebBackend",
   "Mode": "Default",
@@ -134,6 +138,7 @@
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
 <<<<<<< HEAD
+<<<<<<< HEAD
     },
     {
       "Identity": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\history.html",
@@ -153,6 +158,8 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\history.html"
+=======
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
     },
     {
       "Identity": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\index.html",
@@ -229,8 +236,11 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\styles.css"
+<<<<<<< HEAD
 =======
 >>>>>>> 2227da6 (Move project to Web application type)
+=======
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
     }
   ]
 }

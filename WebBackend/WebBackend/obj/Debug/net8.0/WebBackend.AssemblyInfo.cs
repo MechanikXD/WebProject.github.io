@@ -16,6 +16,7 @@ using System.Reflection;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5821ea7e863276b3e528bcb166993140526d9520")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abb77ee4e2add76f5f0957a02862efc65315618d")]
@@ -26,6 +27,9 @@ using System.Reflection;
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa2fa5c9e0f962a3fa9793286bc2e7934b0e0e9b")]
 >>>>>>> 2227da6 (Move project to Web application type)
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2227da6dd1b4a0558308b0e02095700daebec533")]
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
 [assembly: System.Reflection.AssemblyProductAttribute("WebBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

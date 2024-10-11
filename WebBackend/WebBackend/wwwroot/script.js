@@ -1,14 +1,24 @@
 function setupForm() {
     const numEqs = parseInt(document.getElementById('num-eqs').value);
+<<<<<<< HEAD
+=======
+    const numVars = parseInt(document.getElementById('num-vars').value);
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
     const equationsDiv = document.getElementById('equations');
     equationsDiv.innerHTML = ''; // Clear previous equations
 
     // Create inputs for each equation
     for (let i = 0; i < numEqs; i++) {
         let equationHtml = `<br></br>`;
+<<<<<<< HEAD
         for (let j = 0; j < numEqs; j++) {
             equationHtml += `<input type="text" class="coef" data-eq="${i}" data-var="${j}" placeholder="(${i + 1}; ${j + 1})">`;
             if (j < numEqs - 1) {
+=======
+        for (let j = 0; j < numVars; j++) {
+            equationHtml += `<input type="text" class="coef" data-eq="${i}" data-var="${j}" placeholder="(${i + 1}; ${j + 1})">`;
+            if (j < numVars - 1) {
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
                 equationHtml += ' + ';
             }
         }
@@ -19,6 +29,7 @@ function setupForm() {
     // Show the solver form
     document.getElementById('setup-form').style.display = 'none';
     document.getElementById('solver-form').style.display = 'block';
+<<<<<<< HEAD
 
     // Handle arrow key navigation
     document.addEventListener('keydown', function (event) {
@@ -96,6 +107,8 @@ function focusNextInput(row, col) {
 // Button to return to the main page.
 function goToMain() {
   window.location.href = 'index.html';
+=======
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
 }
 
 function getdMatrixFromHtmL() {
@@ -136,6 +149,7 @@ function getdMatrixFromHtmL() {
     return matrix;
 }
 
+<<<<<<< HEAD
 function onPageLoad(){
   const path = window.location.pathname;
   if (path.endsWith('index.html')){
@@ -237,10 +251,38 @@ async function loginUser() {
   const username = document.getElementById("login-username").value;
   const password = document.getElementById("login-password").value;
   const response = await fetch('http://localhost/server/login', {
+=======
+async function SendRequest() {
+  try {
+    matrix = getdMatrixFromHtmL();
+    userid = null;
+    const response = fetch('http://localhost/server/solve', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ matrix, userid })
+    })
+    .then(response => response.text())
+    .then(data => console.log(data))
+  }
+  catch (error) {
+    error => console.error('Error:', error);
+  };
+}
+
+function solve(){
+  SendRequest();
+}
+
+async function registerUser(username, password) {
+  const response = await fetch('/api/auth/register', {
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password })
   });
+<<<<<<< HEAD
   if (response.status != 401) {
     const data = await response.text();
     localStorage.setItem('token', data);  // Save the token for future requests
@@ -250,11 +292,30 @@ async function loginUser() {
     showNotification("Error while logging in...");
   }
   // window.location.href = 'index.html';
+=======
+  const data = await response.json();
+  console.log(data);
+}
+
+async function loginUser(username, password) {
+  const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+  });
+  const data = await response.json();
+  localStorage.setItem('token', data.token);  // Save the token for future requests
+  console.log('Logged in');
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
 }
 
 async function getSolutionHistory() {
   const token = localStorage.getItem('token');
+<<<<<<< HEAD
   const response = await fetch('http://localhost/server/history', {
+=======
+  const response = await fetch('/api/solutions/history', {
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
       method: 'GET',
       headers: {
           'Authorization': `Bearer ${token}`
@@ -262,6 +323,7 @@ async function getSolutionHistory() {
   });
   const data = await response.json();
   console.log('Solution History:', data);
+<<<<<<< HEAD
   
   const historyTableBody = document.getElementById('solution-history');
   historyTableBody.innerHTML = '';  // Clear the table body
@@ -343,3 +405,6 @@ function IsValidMatrix(matrix){
   });
   return true;
 }
+=======
+}
+>>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
