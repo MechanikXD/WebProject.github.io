@@ -20,12 +20,23 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
     public async Task<IActionResult> Post([FromBody] SolveRequest request) {
         var solution = SolveSystem(request.Matrix);
 
-        if (request.UserId != null) {
+        if (request.UserToken != null) {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var jwtToken = tokenHandler.ReadJwtToken(request.UserToken); // Decodes the token
+
+            // Extract the user ID from the token's claims
+            var username = jwtToken?.Claims
+                .FirstOrDefault(c => c.Type == "sub")?.Value.Trim();
+            var client = await context.Clients.FirstOrDefaultAsync(c => c.clientusername == username);
+            if (client == null) {
+                throw new Exception("No client was found in database but token was provided");
+            }
+            
             var savedSolution = new SavedSolutions {
-                FkClientId = (int)request.UserId,
-                SolutionMatrix = JsonSerializer.Serialize(request.Matrix, _serializerOptions),
-                SolutionResult = JsonSerializer.Serialize(solution),
-                SolutionMatrixLength = request.Matrix.Length
+                fkclientid = client.clientid,
+                solutionmatrix = JsonSerializer.Serialize(request.Matrix, _serializerOptions),
+                solutionresult = JsonSerializer.Serialize(solution),
+                solutionmatrixlength = request.Matrix.Length
             };
             
             await context.AddAsync(savedSolution);
@@ -49,45 +60,28 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
     
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request) {
-        await using (var connection = new NpgsqlConnection(configuration.GetConnectionString("DefaultConnection"))) {
-            connection.Open();
-            // Hash password
-            var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
-            const string query = "INSERT INTO \"Users\" (username, password_hash) VALUES (@username, @password_hash)";
-
-            await using (var cmd = new NpgsqlCommand(query, connection)) {
-                cmd.Parameters.AddWithValue("username", request.Username);
-                cmd.Parameters.AddWithValue("password_hash", passwordHash);
-                await cmd.ExecuteNonQueryAsync();
-            }
-        }
+        var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
+        var newUser = new Client { clientusername = request.Username, clientpassword = passwordHash };
+        await context.AddAsync(newUser);
+        await context.SaveChangesAsync();
 
         return Ok("User registered successfully");
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request) {
-        string? passwordHash = null;
-        await using (var connection = new NpgsqlConnection(configuration.GetConnectionString("DefaultConnection"))) {
-            connection.Open();
-            const string query = "SELECT password_hash FROM \"Users\" WHERE username = @username";
-            await using (var cmd = new NpgsqlCommand(query, connection)) {
-                cmd.Parameters.AddWithValue("username", request.Username);
-                var reader = await cmd.ExecuteReaderAsync();
-                if (await reader.ReadAsync()) {
-                    passwordHash = reader.GetString(0);
-                }
-            }
+        var client = await context.Clients.FirstOrDefaultAsync(c => c.clientusername == request.Username);
+
+        if (client == null) {
+            return Unauthorized("No such user found");
         }
 
-        // Verify password
-        if (passwordHash == null || !BCrypt.Net.BCrypt.Verify(request.Password, passwordHash)) {
-            return Unauthorized("Invalid credentials");
+        if (!BCrypt.Net.BCrypt.Verify(request.Password.Trim(), client.clientpassword.Trim())) {
+            return Unauthorized("Invalid Password or login");
         }
 
-        // Generate JWT token
-        var token = GenerateJwtToken(request.Username);
-        return Ok(new { Token = token });
+        var token = GenerateJwtToken(client);
+        return Ok(token);
     }
     
     [Authorize]
@@ -123,20 +117,23 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
         return Ok(solutions);
     }
 
-    private string GenerateJwtToken(string username) {
-        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
-        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
+    private string GenerateJwtToken(Client client) {
         var claims = new[] {
-            new Claim(ClaimTypes.Name, username)
+            new Claim(JwtRegisteredClaimNames.Sub, client.clientusername),
+            new Claim(JwtRegisteredClaimNames.Jti, client.clientid.ToString()),
+            new Claim(ClaimTypes.Name, client.clientusername)
         };
 
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:SecretKey"]));
+        var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
         var token = new JwtSecurityToken(
-            configuration["Jwt:Issuer"],
-            configuration["Jwt:Issuer"],
-            claims,
+            issuer: configuration["Jwt:Issuer"],
+            audience: configuration["Jwt:Audience"],
+            claims: claims,
             expires: DateTime.Now.AddHours(2),
-            signingCredentials: credentials);
+            signingCredentials: credentials
+        );
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }

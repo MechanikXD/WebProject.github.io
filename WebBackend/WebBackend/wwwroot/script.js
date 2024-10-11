@@ -1,15 +1,14 @@
 function setupForm() {
     const numEqs = parseInt(document.getElementById('num-eqs').value);
-    const numVars = parseInt(document.getElementById('num-vars').value);
     const equationsDiv = document.getElementById('equations');
     equationsDiv.innerHTML = ''; // Clear previous equations
 
     // Create inputs for each equation
     for (let i = 0; i < numEqs; i++) {
         let equationHtml = `<br></br>`;
-        for (let j = 0; j < numVars; j++) {
+        for (let j = 0; j < numEqs; j++) {
             equationHtml += `<input type="text" class="coef" data-eq="${i}" data-var="${j}" placeholder="(${i + 1}; ${j + 1})">`;
-            if (j < numVars - 1) {
+            if (j < numEqs - 1) {
                 equationHtml += ' + ';
             }
         }
@@ -20,6 +19,83 @@ function setupForm() {
     // Show the solver form
     document.getElementById('setup-form').style.display = 'none';
     document.getElementById('solver-form').style.display = 'block';
+
+    // Handle arrow key navigation
+    document.addEventListener('keydown', function (event) {
+      const currentElement = document.activeElement;
+      if (currentElement.tagName.toLowerCase() === 'input') {
+        const coefElements = Array.from(document.querySelectorAll('.coef, .const'));
+  
+        // Get the index of the current active element
+        const currentIndex = coefElements.indexOf(currentElement);
+  
+        // Define movement based on arrow keys
+        switch (event.key) {
+          case 'ArrowRight':
+            if (currentIndex < coefElements.length - 1) {
+              coefElements[currentIndex + 1].focus(); // Move to the right
+            }
+            event.preventDefault();
+            break;
+          case 'ArrowLeft':
+            if (currentIndex > 0) {
+              coefElements[currentIndex - 1].focus(); // Move to the left
+            }
+            event.preventDefault();
+            break;
+          case 'ArrowDown':
+            if (currentElement.classList.contains('coef')) {
+              // Move to the same column but next row
+              const eq = parseInt(currentElement.getAttribute('data-eq'));
+              const variable = currentElement.getAttribute('data-var');
+              const nextElement = document.querySelector(`input[data-eq="${eq + 1}"][data-var="${variable}"]`);
+              if (nextElement) {
+                nextElement.focus(); // Move down
+              }
+            } else if (currentElement.classList.contains('const')) {
+              // Move down to the next constant
+              const eq = parseInt(currentElement.getAttribute('data-eq'));
+              const nextElement = document.querySelector(`input.const[data-eq="${eq + 1}"]`);
+              if (nextElement) {
+                nextElement.focus(); // Move down
+              }
+            }
+            event.preventDefault();
+            break;
+          case 'ArrowUp':
+            if (currentElement.classList.contains('coef')) {
+              // Move to the same column but previous row
+              const eq = parseInt(currentElement.getAttribute('data-eq'));
+              const variable = currentElement.getAttribute('data-var');
+              const prevElement = document.querySelector(`input[data-eq="${eq - 1}"][data-var="${variable}"]`);
+              if (prevElement) {
+                prevElement.focus(); // Move up
+              }
+            } else if (currentElement.classList.contains('const')) {
+              // Move up to the previous constant
+              const eq = parseInt(currentElement.getAttribute('data-eq'));
+              const prevElement = document.querySelector(`input.const[data-eq="${eq - 1}"]`);
+              if (prevElement) {
+                prevElement.focus(); // Move up
+              }
+            }
+            event.preventDefault();
+            break;
+        }
+      }
+    }
+  )
+}
+
+function focusNextInput(row, col) {
+  let nextInput = document.querySelector(`input[data-eq="${row}"][data-var="${col}"]`);
+  if (nextInput) {
+      nextInput.focus();
+  }
+}
+// Button to return to the main page.
+function goToMain() {
+  window.location.href = 'index.html';
 }
 
 function getdMatrixFromHtmL() {
@@ -60,18 +136,19 @@ function getdMatrixFromHtmL() {
     return matrix;
 }
 
-async function SendRequest() {
+async function SolveRequest() {
   try {
     matrix = getdMatrixFromHtmL();
-    userid = null;
+    usertoken = localStorage.getItem('token');
     const response = fetch('http://localhost/server/solve', {
       method: 'POST',
       headers: {
+        // 'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ matrix, userid })
+      body: JSON.stringify({ matrix, usertoken })
     })
-    .then(response => response.text())
+    .then(response => response.json())
     .then(data => console.log(data))
   }
   catch (error) {
@@ -79,34 +156,50 @@ async function SendRequest() {
   };
 }
 
-function solve(){
-  SendRequest();
+async function registerUser() {
+  const username = document.getElementById("register-username").value;
+  const password = document.getElementById("register-password").value;
+  try {
+    if (password == document.getElementById("register-password-confirm").value){
+      const response = fetch('http://localhost/server/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      })
+      .then(response => response.text())
+      .then(data => console.log(data));
+    }
+    else {
+      console.log("Password doesn't match");
+    }
+  }
+  catch (error){
+    error => console.error('Error:', error);
+  }
 }
 
-async function registerUser(username, password) {
-  const response = await fetch('/api/auth/register', {
+async function loginUser() {
+  const username = document.getElementById("login-username").value;
+  const password = document.getElementById("login-password").value;
+  const response = await fetch('http://localhost/server/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password })
   });
-  const data = await response.json();
-  console.log(data);
-}
-
-async function loginUser(username, password) {
-  const response = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password })
-  });
-  const data = await response.json();
-  localStorage.setItem('token', data.token);  // Save the token for future requests
-  console.log('Logged in');
+  if (response.status != 401) {
+    const data = await response.text();
+    localStorage.setItem('token', data);  // Save the token for future requests
+    console.log('Logged in');
+  } 
+  else {
+    console.error("Response is not OK");
+  }
+  // window.location.href = 'index.html';
 }
 
 async function getSolutionHistory() {
   const token = localStorage.getItem('token');
-  const response = await fetch('/api/solutions/history', {
+  const response = await fetch('http://localhost/server/history', {
       method: 'GET',
       headers: {
           'Authorization': `Bearer ${token}`

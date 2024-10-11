@@ -15,18 +15,13 @@
     <form id="setup-form">
         <label for="num-eqs">Number of Equations:</label>
         <input type="number" id="num-eqs" min="1" max="10" value="2">
-        <label for="num-vars">Number of Variables:</label>
-        <input type="number" id="num-vars" min="1" max="10" value="2">
         <button type="button" onclick="setupForm()">Set Up</button>
     </form>
     <form id="solver-form" style="display: none;">
         <div id="equations"></div>
-        <button type="button" onclick="solve()">Solve</button>
+        <button type="button" onclick="SolveRequest()">Solve</button>
+        <button type="button" onclick="goToMain()">Back</button>
     </form>
-    <div id="result">
-        <h2>Results:</h2>
-        <p id="solution"></p>
-    </div>
 </div>
 <script src="script.js"></script>
 </body>
