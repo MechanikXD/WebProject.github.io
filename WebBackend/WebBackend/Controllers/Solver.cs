@@ -86,12 +86,23 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
     public async Task<IActionResult> Post([FromBody] SolveRequest request) {
         var solution = SolveSystem(request.Matrix);
 
-        if (request.UserId != null) {
+        if (request.UserToken != null) {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var jwtToken = tokenHandler.ReadJwtToken(request.UserToken); // Decodes the token
+
+            // Extract the user ID from the token's claims
+            var username = jwtToken?.Claims
+                .FirstOrDefault(c => c.Type == "sub")?.Value.Trim();
+            var client = await context.Clients.FirstOrDefaultAsync(c => c.clientusername == username);
+            if (client == null) {
+                throw new Exception("No client was found in database but token was provided");
+            }
+            
             var savedSolution = new SavedSolutions {
-                FkClientId = (int)request.UserId,
-                SolutionMatrix = JsonSerializer.Serialize(request.Matrix, _serializerOptions),
-                SolutionResult = JsonSerializer.Serialize(solution),
-                SolutionMatrixLength = request.Matrix.Length
+                fkclientid = client.clientid,
+                solutionmatrix = JsonSerializer.Serialize(request.Matrix, _serializerOptions),
+                solutionresult = JsonSerializer.Serialize(solution),
+                solutionmatrixlength = request.Matrix.Length
             };
             
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
@@ -142,18 +153,10 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
     
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request) {
-        await using (var connection = new NpgsqlConnection(configuration.GetConnectionString("DefaultConnection"))) {
-            connection.Open();
-            // Hash password
-            var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
-            const string query = "INSERT INTO \"Users\" (username, password_hash) VALUES (@username, @password_hash)";
-
-            await using (var cmd = new NpgsqlCommand(query, connection)) {
-                cmd.Parameters.AddWithValue("username", request.Username);
-                cmd.Parameters.AddWithValue("password_hash", passwordHash);
-                await cmd.ExecuteNonQueryAsync();
-            }
-        }
+        var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
+        var newUser = new Client { clientusername = request.Username, clientpassword = passwordHash };
+        await context.AddAsync(newUser);
+        await context.SaveChangesAsync();
 
         return Ok("User registered successfully");
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
@@ -162,11 +165,15 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Pull client from database with given name
+=======
+>>>>>>> 790bda1 (implement authorization system)
         var client = await context.Clients.FirstOrDefaultAsync(c => c.clientusername == request.Username);
 
         if (client == null) {
             return Unauthorized("No such user found");
+<<<<<<< HEAD
         }
         
         // Verify given data from client
@@ -189,17 +196,23 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
                     passwordHash = reader.GetString(0);
                 }
             }
+=======
+>>>>>>> 790bda1 (implement authorization system)
         }
 
-        // Verify password
-        if (passwordHash == null || !BCrypt.Net.BCrypt.Verify(request.Password, passwordHash)) {
-            return Unauthorized("Invalid credentials");
+        if (!BCrypt.Net.BCrypt.Verify(request.Password.Trim(), client.clientpassword.Trim())) {
+            return Unauthorized("Invalid Password or login");
         }
 
+<<<<<<< HEAD
         // Generate JWT token
         var token = GenerateJwtToken(request.Username);
         return Ok(new { Token = token });
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+        var token = GenerateJwtToken(client);
+        return Ok(token);
+>>>>>>> 790bda1 (implement authorization system)
     }
     
     [Authorize]
@@ -309,21 +322,28 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
         return Ok(solutions);
     }
 
-    private string GenerateJwtToken(string username) {
-        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
-        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
+    private string GenerateJwtToken(Client client) {
         var claims = new[] {
-            new Claim(ClaimTypes.Name, username)
+            new Claim(JwtRegisteredClaimNames.Sub, client.clientusername),
+            new Claim(JwtRegisteredClaimNames.Jti, client.clientid.ToString()),
+            new Claim(ClaimTypes.Name, client.clientusername)
         };
 
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:SecretKey"]));
+        var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
         var token = new JwtSecurityToken(
-            configuration["Jwt:Issuer"],
-            configuration["Jwt:Issuer"],
-            claims,
+            issuer: configuration["Jwt:Issuer"],
+            audience: configuration["Jwt:Audience"],
+            claims: claims,
             expires: DateTime.Now.AddHours(2),
+<<<<<<< HEAD
             signingCredentials: credentials);
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+            signingCredentials: credentials
+        );
+>>>>>>> 790bda1 (implement authorization system)
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }

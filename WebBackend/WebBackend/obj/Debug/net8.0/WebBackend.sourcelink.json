@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 {"documents":{"D:\\WebProject\\*":"https://raw.githubusercontent.com/MechanikXD/WebProject/5821ea7e863276b3e528bcb166993140526d9520/*"}}
 =======
 {"documents":{"D:\\WebProject\\*":"https://raw.githubusercontent.com/MechanikXD/WebProject/0acab593ecbd82b26f9936b5be86dba90a500974/*"}}
@@ -7,3 +8,6 @@
 =======
 {"documents":{"D:\\WebProject\\*":"https://raw.githubusercontent.com/MechanikXD/WebProject/2227da6dd1b4a0558308b0e02095700daebec533/*"}}
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+{"documents":{"D:\\WebProject\\*":"https://raw.githubusercontent.com/MechanikXD/WebProject/758e2aa404fd7b875b5ab63754c92f50232a3ec2/*"}}
+>>>>>>> 790bda1 (implement authorization system)

@@ -1,12 +1,18 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 using System.ComponentModel.DataAnnotations;
 
 =======
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+using System.ComponentModel.DataAnnotations;
+
+>>>>>>> 790bda1 (implement authorization system)
 namespace WebBackend.Models;
 
 using Microsoft.EntityFrameworkCore;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 public record SolveRequest(double[][] Matrix, string? UserToken);
 public record SolveResponse(double[] Solution);
@@ -26,21 +32,31 @@ public class Client {
     public string clientpassword { get; set; }
 =======
 public record SolveRequest(double[][] Matrix, int? UserId);
+=======
+public record SolveRequest(double[][] Matrix, string? UserToken);
+>>>>>>> 790bda1 (implement authorization system)
 public record SolveResponse(double[] Solution);
 
 public class SavedSolutions {
-    private int SolutionId { get; set; }
-    public int FkClientId { get; set; }
-    public string SolutionMatrix { get; set; } 
-    public string SolutionResult { get; set; }
-    public int SolutionMatrixLength { get; set; }
+    [Key]
+    public int solutionid { get; set; }
+    public int fkclientid { get; set; }
+    public string solutionmatrix { get; set; } 
+    public string solutionresult { get; set; }
+    public int solutionmatrixlength { get; set; }
 }
-
 public class Client {
+<<<<<<< HEAD
     public int ClientId { get; set; }
     public string ClientUserName { get; set; }
     public string ClientPassword { get; set; }
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+    [Key]
+    public int clientid { get; set; }
+    public string clientusername { get; set; }
+    public string clientpassword { get; set; }
+>>>>>>> 790bda1 (implement authorization system)
 }
 
 public class DbSolutionContext(DbContextOptions<DbSolutionContext> options) : DbContext(options) {
@@ -51,6 +67,7 @@ public class DbSolutionContext(DbContextOptions<DbSolutionContext> options) : Db
         base.OnModelCreating(modelBuilder);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         modelBuilder.Entity<SavedSolutions>().ToTable("savedsolutions", "public");
         modelBuilder.Entity<Client>().ToTable("client", "public");
 =======
@@ -58,6 +75,10 @@ public class DbSolutionContext(DbContextOptions<DbSolutionContext> options) : Db
         modelBuilder.Entity<SavedSolutions>().ToTable("SavedSolution", "public");
         modelBuilder.Entity<Client>().ToTable("Client", "public");
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+        modelBuilder.Entity<SavedSolutions>().ToTable("savedsolutions", "public");
+        modelBuilder.Entity<Client>().ToTable("client", "public");
+>>>>>>> 790bda1 (implement authorization system)
     }
 }
 

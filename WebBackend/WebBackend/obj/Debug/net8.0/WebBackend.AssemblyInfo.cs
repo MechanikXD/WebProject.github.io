@@ -17,6 +17,7 @@ using System.Reflection;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5821ea7e863276b3e528bcb166993140526d9520")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abb77ee4e2add76f5f0957a02862efc65315618d")]
@@ -30,6 +31,9 @@ using System.Reflection;
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2227da6dd1b4a0558308b0e02095700daebec533")]
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+758e2aa404fd7b875b5ab63754c92f50232a3ec2")]
+>>>>>>> 790bda1 (implement authorization system)
 [assembly: System.Reflection.AssemblyProductAttribute("WebBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

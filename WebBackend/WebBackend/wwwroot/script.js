@@ -1,15 +1,19 @@
 function setupForm() {
     const numEqs = parseInt(document.getElementById('num-eqs').value);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     const numVars = parseInt(document.getElementById('num-vars').value);
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+>>>>>>> 790bda1 (implement authorization system)
     const equationsDiv = document.getElementById('equations');
     equationsDiv.innerHTML = ''; // Clear previous equations
 
     // Create inputs for each equation
     for (let i = 0; i < numEqs; i++) {
         let equationHtml = `<br></br>`;
+<<<<<<< HEAD
 <<<<<<< HEAD
         for (let j = 0; j < numEqs; j++) {
             equationHtml += `<input type="text" class="coef" data-eq="${i}" data-var="${j}" placeholder="(${i + 1}; ${j + 1})">`;
@@ -19,6 +23,11 @@ function setupForm() {
             equationHtml += `<input type="text" class="coef" data-eq="${i}" data-var="${j}" placeholder="(${i + 1}; ${j + 1})">`;
             if (j < numVars - 1) {
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+        for (let j = 0; j < numEqs; j++) {
+            equationHtml += `<input type="text" class="coef" data-eq="${i}" data-var="${j}" placeholder="(${i + 1}; ${j + 1})">`;
+            if (j < numEqs - 1) {
+>>>>>>> 790bda1 (implement authorization system)
                 equationHtml += ' + ';
             }
         }
@@ -30,6 +39,9 @@ function setupForm() {
     document.getElementById('setup-form').style.display = 'none';
     document.getElementById('solver-form').style.display = 'block';
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 790bda1 (implement authorization system)
 
     // Handle arrow key navigation
     document.addEventListener('keydown', function (event) {
@@ -107,8 +119,11 @@ function focusNextInput(row, col) {
 // Button to return to the main page.
 function goToMain() {
   window.location.href = 'index.html';
+<<<<<<< HEAD
 =======
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+>>>>>>> 790bda1 (implement authorization system)
 }
 
 function getdMatrixFromHtmL() {
@@ -149,6 +164,7 @@ function getdMatrixFromHtmL() {
     return matrix;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 function onPageLoad(){
   const path = window.location.pathname;
@@ -253,17 +269,21 @@ async function loginUser() {
   const response = await fetch('http://localhost/server/login', {
 =======
 async function SendRequest() {
+=======
+async function SolveRequest() {
+>>>>>>> 790bda1 (implement authorization system)
   try {
     matrix = getdMatrixFromHtmL();
-    userid = null;
+    usertoken = localStorage.getItem('token');
     const response = fetch('http://localhost/server/solve', {
       method: 'POST',
       headers: {
+        // 'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ matrix, userid })
+      body: JSON.stringify({ matrix, usertoken })
     })
-    .then(response => response.text())
+    .then(response => response.json())
     .then(data => console.log(data))
   }
   catch (error) {
@@ -271,17 +291,43 @@ async function SendRequest() {
   };
 }
 
-function solve(){
-  SendRequest();
+async function registerUser() {
+  const username = document.getElementById("register-username").value;
+  const password = document.getElementById("register-password").value;
+  try {
+    if (password == document.getElementById("register-password-confirm").value){
+      const response = fetch('http://localhost/server/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      })
+      .then(response => response.text())
+      .then(data => console.log(data));
+    }
+    else {
+      console.log("Password doesn't match");
+    }
+  }
+  catch (error){
+    error => console.error('Error:', error);
+  }
 }
 
+<<<<<<< HEAD
 async function registerUser(username, password) {
   const response = await fetch('/api/auth/register', {
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+async function loginUser() {
+  const username = document.getElementById("login-username").value;
+  const password = document.getElementById("login-password").value;
+  const response = await fetch('http://localhost/server/login', {
+>>>>>>> 790bda1 (implement authorization system)
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password })
   });
+<<<<<<< HEAD
 <<<<<<< HEAD
   if (response.status != 401) {
     const data = await response.text();
@@ -307,15 +353,30 @@ async function loginUser(username, password) {
   localStorage.setItem('token', data.token);  // Save the token for future requests
   console.log('Logged in');
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+  if (response.status != 401) {
+    const data = await response.text();
+    localStorage.setItem('token', data);  // Save the token for future requests
+    console.log('Logged in');
+  } 
+  else {
+    console.error("Response is not OK");
+  }
+  // window.location.href = 'index.html';
+>>>>>>> 790bda1 (implement authorization system)
 }
 
 async function getSolutionHistory() {
   const token = localStorage.getItem('token');
 <<<<<<< HEAD
+<<<<<<< HEAD
   const response = await fetch('http://localhost/server/history', {
 =======
   const response = await fetch('/api/solutions/history', {
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+  const response = await fetch('http://localhost/server/history', {
+>>>>>>> 790bda1 (implement authorization system)
       method: 'GET',
       headers: {
           'Authorization': `Bearer ${token}`

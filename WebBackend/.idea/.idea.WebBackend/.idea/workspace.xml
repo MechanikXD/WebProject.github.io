@@ -54,6 +54,7 @@
       <change beforePath="$PROJECT_DIR$/WebBackend/LoadBalancer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/LoadBalancer.cs" afterDir="false" />
 =======
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebBackend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebBackend/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/WebBackend/Context.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/LoadBalancer.cs" beforeDir="false" />
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
@@ -61,35 +62,24 @@
       <change beforePath="$PROJECT_DIR$/WebBackend/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/Properties/launchSettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/Solver.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/WebBackend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/WebBackend.csproj" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/WebBackend/Controllers/Solver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/Controllers/Solver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBackend/Models/Models.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/Models/Models.cs" afterDir="false" />
+>>>>>>> 790bda1 (implement authorization system)
       <change beforePath="$PROJECT_DIR$/WebBackend/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/Microsoft.Extensions.Caching.Abstractions.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/Microsoft.Extensions.Caching.Memory.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/Microsoft.Extensions.Caching.Memory.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/Microsoft.Extensions.Options.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/Microsoft.Extensions.Options.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/System.Diagnostics.DiagnosticSource.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.staticwebassets.runtime.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.staticwebassets.runtime.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/apphost.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/ref/WebBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/ref/WebBackend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/refint/WebBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/refint/WebBackend.dll" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/staticwebassets.build.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/staticwebassets.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/staticwebassets.development.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/staticwebassets.pack.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/staticwebassets.pack.json" afterDir="false" />
@@ -119,6 +109,11 @@
       <change beforePath="$PROJECT_DIR$/../script.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../styles.css" beforeDir="false" />
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+      <change beforePath="$PROJECT_DIR$/WebBackend/wwwroot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/wwwroot/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBackend/wwwroot/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/wwwroot/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBackend/wwwroot/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/wwwroot/script.js" afterDir="false" />
+>>>>>>> 790bda1 (implement authorization system)
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -378,6 +373,7 @@
       <workItem from="1728453536575" duration="4924000" />
       <workItem from="1728559351423" duration="10107000" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1728631192050" duration="10502000" />
       <workItem from="1728645414900" duration="5313000" />
       <workItem from="1728722910665" duration="4066000" />
@@ -390,6 +386,10 @@
 >>>>>>> 2227da6 (Move project to Web application type)
 =======
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+      <workItem from="1728631192050" duration="10502000" />
+      <workItem from="1728645414900" duration="5313000" />
+>>>>>>> 790bda1 (implement authorization system)
     </task>
     <servers />
   </component>
