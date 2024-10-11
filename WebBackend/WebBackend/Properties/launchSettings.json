@@ -34,32 +34,29 @@
           "ASPNETCORE_ENVIRONMENT": "Development"
         }
       },
-      "Server5001": {
+      "LoadBalancer": {
         "commandName": "Project",
-        "dotnetRunMessages": true,
+        "launchBrowser": true,
+        "applicationUrl": "http://localhost:5000",
+        "environmentVariables": {
+          "ASPNETCORE_ENVIRONMENT": "Development"
+        }
+      },
+      "Server1": {
+        "commandName": "Project",
         "launchBrowser": true,
         "applicationUrl": "http://localhost:5001",
         "environmentVariables": {
           "ASPNETCORE_ENVIRONMENT": "Development"
         }
       },
-      "Server5002": {
+      "Server2": {
         "commandName": "Project",
-        "dotnetRunMessages": true,
         "launchBrowser": true,
         "applicationUrl": "http://localhost:5002",
         "environmentVariables": {
           "ASPNETCORE_ENVIRONMENT": "Development"
         }
-      },
-      "Server5003": {
-        "commandName": "Project",
-        "dotnetRunMessages": true,
-        "launchBrowser": true,
-        "applicationUrl": "http://localhost:5003",
-        "environmentVariables": {
-          "ASPNETCORE_ENVIRONMENT": "Development"
-        }
       }
     }
-  }
+}

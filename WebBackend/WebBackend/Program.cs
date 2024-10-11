@@ -1,43 +1,71 @@
-﻿namespace WebBackend;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-using System.Data.SqlClient;
+namespace WebBackend;
+
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
-using Context;
-using Balancer;
+using Models;
 
 public class Startup(IConfiguration configuration) {
-    public IConfiguration Configuration { get; } = configuration;
+    private IConfiguration Configuration { get; } = configuration;
 
     public static void Main(string[] args) {
-        ConfigureServices(new ServiceCollection());
-        var loadBalancer = new LoadBalancer();
-        loadBalancer.Run();
-        CreateHostBuilder(["5001", "5002", "5003"]).Build().Run();
+        var builder = WebApplication.CreateBuilder(args);
+
+        builder.Services.AddCors(options => {
+            options.AddPolicy("AllowAll", b => {
+                b.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            });
+        });
+        
+        builder.Services.AddLogging();
+        builder.Services.AddControllers();
+        builder.Services.AddDbContext<DbSolutionContext>(options =>
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+        
+        var app = builder.Build();
+        
+        app.UseCors("AllowAll");
+        if (app.Environment.IsDevelopment()) {
+            app.UseDeveloperExceptionPage();
+        }
+
+        app.MapControllers();
+        app.UseRouting();
+        app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+
+        app.Run();
     }
     
-    public static void ConfigureServices(IServiceCollection services) {
-        const string dbConnectionString = "Host=localhost;Port=5432;Database=WebProject;Username=postgres;Password=qwsdcvgtrfmlg;";
-
-        services.AddDbContext<SolutionContext>(options => options.UseNpgsql(new SqlConnection(dbConnectionString)));
+    public void ConfigureServices(IServiceCollection services) {
+        services.AddDbContext<DbSolutionContext>(options =>
+            options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
         services.AddCors(options =>
         {
             options.AddPolicy("AllowAll",
                 builder =>
                 {
                     builder.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader();
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
                 });
         });
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options => {
+                options.TokenValidationParameters = new TokenValidationParameters {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration["Jwt:Issuer"],
+                    ValidAudience = Configuration["Jwt:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                };
+            });
         services.AddControllers();
     }
-
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.UseStartup<Startup>();
-            });
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
         if (env.IsDevelopment()) {
@@ -52,6 +80,7 @@ public class Startup(IConfiguration configuration) {
         app.UseStaticFiles();
         app.UseRouting();
         app.UseAuthorization();
+        app.UseAuthentication();
         app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
     }
 }
