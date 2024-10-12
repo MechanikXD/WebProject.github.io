@@ -208,3 +208,17 @@ async function getSolutionHistory() {
   const data = await response.json();
   console.log('Solution History:', data);
 }
+
+async function DeleteSolutionFromHistory(relativeid) {
+  const token = localStorage.getItem('token');
+  const response = await fetch('http://localhost/server/delete', {
+    method: 'DELETE',
+    headers: { 
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+   },
+    body: relativeid
+  });
+  const data = await response.text();
+  console.log(data);
+}
