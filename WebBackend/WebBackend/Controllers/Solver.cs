@@ -6,23 +6,31 @@ using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 using Npgsql;
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+>>>>>>> 29a9675 (Implement History System)
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using MatrixSerializer;
 <<<<<<< HEAD
+<<<<<<< HEAD
 using Newtonsoft.Json;
 =======
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+using Newtonsoft.Json;
+>>>>>>> 29a9675 (Implement History System)
 
 [Route("[controller]")]
 [ApiController]
 public class ServerController(DbSolutionContext context, IConfiguration configuration) : ControllerBase {
     private readonly JsonSerializerOptions _serializerOptions = new() { Converters = { new Array2DConverter() }};
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     // Main solver
@@ -82,13 +90,20 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
 
             // Add solution to database
 =======
+=======
+    
+    // Main solver
+>>>>>>> 29a9675 (Implement History System)
     [HttpPost("solve")]
     public async Task<IActionResult> Post([FromBody] SolveRequest request) {
+        // Solve system
         var solution = SolveSystem(request.Matrix);
-
+        
+        // If user has token (logged in) - add this solution to database (as history)
         if (request.UserToken != null) {
+            // Decodes the token
             var tokenHandler = new JwtSecurityTokenHandler();
-            var jwtToken = tokenHandler.ReadJwtToken(request.UserToken); // Decodes the token
+            var jwtToken = tokenHandler.ReadJwtToken(request.UserToken); 
 
             // Extract the user ID from the token's claims
             var username = jwtToken?.Claims
@@ -98,14 +113,19 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
                 throw new Exception("No client was found in database but token was provided");
             }
             
+            // Create solution to store in database
             var savedSolution = new SavedSolutions {
                 fkclientid = client.clientid,
-                solutionmatrix = JsonSerializer.Serialize(request.Matrix, _serializerOptions),
-                solutionresult = JsonSerializer.Serialize(solution),
+                solutionmatrix = System.Text.Json.JsonSerializer.Serialize(request.Matrix, _serializerOptions),
+                solutionresult = System.Text.Json.JsonSerializer.Serialize(solution),
                 solutionmatrixlength = request.Matrix.Length
             };
             
+<<<<<<< HEAD
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+            // Add solution to database
+>>>>>>> 29a9675 (Implement History System)
             await context.AddAsync(savedSolution);
             await context.SaveChangesAsync();
         }
@@ -138,7 +158,8 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
 =======
         return Ok(new SolveResponse(solution));
     }
-
+    
+    // Debug task, never actually used in frontend
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetSolution(int id) {
         Console.WriteLine($"Received GET request for {id}id");
@@ -153,8 +174,10 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
     
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request) {
+        // Hash password for safety
         var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
         var newUser = new Client { clientusername = request.Username, clientpassword = passwordHash };
+        // Add user into database
         await context.AddAsync(newUser);
         await context.SaveChangesAsync();
 
@@ -166,9 +189,13 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
     public async Task<IActionResult> Login([FromBody] LoginRequest request) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Pull client from database with given name
 =======
 >>>>>>> 790bda1 (implement authorization system)
+=======
+        // Pull client from database with given name
+>>>>>>> 29a9675 (Implement History System)
         var client = await context.Clients.FirstOrDefaultAsync(c => c.clientusername == request.Username);
 
         if (client == null) {
@@ -199,10 +226,12 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
 =======
 >>>>>>> 790bda1 (implement authorization system)
         }
-
+        
+        // Verify given data from client
         if (!BCrypt.Net.BCrypt.Verify(request.Password.Trim(), client.clientpassword.Trim())) {
             return Unauthorized("Invalid Password or login");
         }
+<<<<<<< HEAD
 
 <<<<<<< HEAD
         // Generate JWT token
@@ -210,6 +239,10 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
         return Ok(new { Token = token });
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
 =======
+=======
+        
+        // Generate JWT token for client
+>>>>>>> 29a9675 (Implement History System)
         var token = GenerateJwtToken(client);
         return Ok(token);
 >>>>>>> 790bda1 (implement authorization system)
@@ -293,33 +326,31 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
         );
 =======
         var username = User.Identity.Name; // Get the logged-in user's username
+        
+        var userId = await context.Clients.FirstOrDefaultAsync(c => c.clientusername.Trim() == username.Trim());
+        // var matrixArray = new List<HistoryResponse>();
+        // Store all entries where user index matches foreign key
+        await context.Solutions.LoadAsync();
+        var matrixArray = context.Solutions.Local.Where(solutions => solutions.fkclientid == userId.clientid);
 
-        // Query to get the user ID
-        int userId;
-        await using (var connection = new NpgsqlConnection(configuration.GetConnectionString("DefaultConnection"))) {
-            connection.Open();
-            const string query = "SELECT user_id FROM \"Users\" WHERE username = @username";
-            await using (var cmd = new NpgsqlCommand(query, connection)) {
-                cmd.Parameters.AddWithValue("username", username);
-                userId = (int)await cmd.ExecuteScalarAsync();
-            }
-        }
+        return Ok(JsonConvert.SerializeObject(matrixArray));
+    }
 
-        // Query to get user's solutions
-        var solutions = new List<string>();
-        await using (var connection = new NpgsqlConnection(configuration.GetConnectionString("DefaultConnection"))) {
-            connection.Open();
-            const string query = "SELECT solution FROM \"SavedSolutions\" WHERE user_id = @user_id";
-            await using (var cmd = new NpgsqlCommand(query, connection)) {
-                cmd.Parameters.AddWithValue("user_id", userId);
-                var reader = await cmd.ExecuteReaderAsync();
-                while (await reader.ReadAsync()) {
-                    solutions.Add(reader.GetString(0));
-                }
-            }
-        }
-
-        return Ok(solutions);
+    [Authorize]
+    [HttpDelete("delete")]
+    public async Task<IActionResult> DeleteSolution([FromBody] int relativeId) {
+        var username = User.Identity.Name; // Get the logged-in user's username
+        
+        // Since index is relative we need user history to determent correct index in database
+        var userId = await context.Clients.FirstOrDefaultAsync(c => c.clientusername.Trim() == username.Trim());
+        
+        await context.Solutions.LoadAsync();
+        var userSolutions = context.Solutions.Local.Where(source => source.fkclientid == userId.clientid).ToList();
+        // Query request
+        context.Solutions.Remove(userSolutions[relativeId]);
+        await context.SaveChangesAsync();
+        
+        return Ok("Entry deleted");
     }
 
     private string GenerateJwtToken(Client client) {
@@ -350,12 +381,16 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
     
     private static double[] SolveSystem(double[][] matrix) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 29a9675 (Implement History System)
         var matrixCopy = new double[matrix.Length, matrix[0].Length];
         for (var i = 0; i < matrix.Length; i++) {
             for (var j = 0; j < matrix[0].Length; j++) {
                 matrixCopy[i, j] = matrix[i][j];
             }
         }
+<<<<<<< HEAD
 
         var swapArray = new List<(int fromIndex, int toIndex)>();
         var matrixSize = matrix.Length;
@@ -388,19 +423,27 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
                     matrixCopy[k, j] -= factor * matrixCopy[i, j];
 =======
         var matrixSize = matrix.GetLength(0);
+=======
+        
+        var matrixSize = matrix.Length;
+>>>>>>> 29a9675 (Implement History System)
         var result = new double[matrixSize];
 
         for (var i = 0; i < matrixSize; i++) {
-            // Make the diagonal contain all 1's
             for (var k = i + 1; k < matrixSize; k++) {
-                var factor = matrix[k][i] / matrix[i][i];
+                var factor = matrixCopy[k, i] / matrixCopy[i, i];
                 for (var j = i; j <= matrixSize; j++) {
+<<<<<<< HEAD
                     matrix[k][j] -= factor * matrix[i][j];
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+                    matrixCopy[k, j] -= factor * matrixCopy[i, j];
+>>>>>>> 29a9675 (Implement History System)
                 }
             }
         }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         for (var i = matrixSize - 1; i >= 0; i--) {
             result[i] = matrixCopy[i, matrixSize] / matrixCopy[i, i];
@@ -408,11 +451,17 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
                 matrixCopy[k, matrixSize] -= matrixCopy[k, i] * result[i];
 =======
         // Back substitution to solve for variables
+=======
+>>>>>>> 29a9675 (Implement History System)
         for (var i = matrixSize - 1; i >= 0; i--) {
-            result[i] = matrix[i][matrixSize] / matrix[i][i];
+            result[i] = matrixCopy[i, matrixSize] / matrixCopy[i, i];
             for (var k = i - 1; k >= 0; k--) {
+<<<<<<< HEAD
                 matrix[k][matrixSize] -= matrix[k][i] * result[i];
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+                matrixCopy[k, matrixSize] -= matrixCopy[k, i] * result[i];
+>>>>>>> 29a9675 (Implement History System)
             }
         }
 

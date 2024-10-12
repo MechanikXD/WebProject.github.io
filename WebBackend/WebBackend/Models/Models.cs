@@ -85,7 +85,12 @@ public class DbSolutionContext(DbContextOptions<DbSolutionContext> options) : Db
 public record LoginRequest(string Username, string Password);
 <<<<<<< HEAD
 public record RegisterRequest(string Username, string Password);
+<<<<<<< HEAD
 =======
 public record RegisterRequest(string Username, string Password);
 public record HistoryRequest(int UserId);
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+public record HistoryRequest(int UserId);
+public record HistoryResponse(string Matrix, string Solution);
+>>>>>>> 29a9675 (Implement History System)

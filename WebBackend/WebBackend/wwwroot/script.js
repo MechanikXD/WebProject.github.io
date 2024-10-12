@@ -423,7 +423,11 @@ async function getSolutionHistory() {
   });
 }
 
+<<<<<<< HEAD
 async function DeleteSolutionFromHistory(solutionid) {
+=======
+async function DeleteSolutionFromHistory(relativeid) {
+>>>>>>> 29a9675 (Implement History System)
   const token = localStorage.getItem('token');
   const response = await fetch('http://localhost/server/delete', {
     method: 'DELETE',
@@ -431,6 +435,7 @@ async function DeleteSolutionFromHistory(solutionid) {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
    },
+<<<<<<< HEAD
     body: solutionid
   });
   const data = await response.text();
@@ -469,3 +474,10 @@ function IsValidMatrix(matrix){
 =======
 }
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+    body: relativeid
+  });
+  const data = await response.text();
+  console.log(data);
+}
+>>>>>>> 29a9675 (Implement History System)

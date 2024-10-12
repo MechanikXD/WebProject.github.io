@@ -39,6 +39,9 @@
 2024/10/10 14:27:11 [error] 3212#2004: *1 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /solve HTTP/1.1", upstream: "http://127.0.0.1:8080/solve", host: "localhost"
 2024/10/10 14:58:24 [emerg] 15340#9124: invalid host in upstream "localhost:5001/api" in D:\WebProject\WebBackend\nginx-1.27.2/conf/nginx.conf:36
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 29a9675 (Implement History System)
 2024/10/11 13:16:04 [error] 5696#16228: *29 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /server/register HTTP/1.1", upstream: "http://[::1]:5001/server/register", host: "localhost"
 2024/10/11 13:16:06 [error] 5696#16228: *29 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /server/register HTTP/1.1", upstream: "http://127.0.0.1:5001/server/register", host: "localhost"
 2024/10/11 13:16:08 [error] 5696#16228: *29 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /server/register HTTP/1.1", upstream: "http://[::1]:5002/server/register", host: "localhost"
@@ -55,9 +58,12 @@
 2024/10/11 15:01:43 [error] 5696#16228: *71 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /server/register HTTP/1.1", upstream: "http://[::1]:5002/server/register", host: "localhost"
 2024/10/11 15:01:45 [error] 5696#16228: *71 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /server/register HTTP/1.1", upstream: "http://127.0.0.1:5001/server/register", host: "localhost"
 2024/10/11 15:01:47 [error] 5696#16228: *71 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /server/register HTTP/1.1", upstream: "http://127.0.0.1:5002/server/register", host: "localhost"
+<<<<<<< HEAD
 2024/10/14 10:39:26 [error] 5464#3616: *1 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /server/solve HTTP/1.1", upstream: "http://[::1]:5001/server/solve", host: "localhost"
 2024/10/14 10:39:28 [error] 5464#3616: *1 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /server/solve HTTP/1.1", upstream: "http://127.0.0.1:5001/server/solve", host: "localhost"
 2024/10/14 10:39:30 [error] 5464#3616: *1 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /server/solve HTTP/1.1", upstream: "http://[::1]:5002/server/solve", host: "localhost"
 2024/10/14 10:39:32 [error] 5464#3616: *1 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "POST /server/solve HTTP/1.1", upstream: "http://127.0.0.1:5002/server/solve", host: "localhost"
 =======
 >>>>>>> 933dc1f (Implement nginx)
+=======
+>>>>>>> 29a9675 (Implement History System)
