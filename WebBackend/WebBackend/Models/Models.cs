@@ -37,3 +37,4 @@ public class DbSolutionContext(DbContextOptions<DbSolutionContext> options) : Db
 public record LoginRequest(string Username, string Password);
 public record RegisterRequest(string Username, string Password);
 public record HistoryRequest(int UserId);
+public record HistoryResponse(string Matrix, string Solution);
