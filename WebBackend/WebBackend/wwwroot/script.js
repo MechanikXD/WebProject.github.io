@@ -136,20 +136,68 @@ function getdMatrixFromHtmL() {
     return matrix;
 }
 
+function onPageLoad(){
+  const path = window.location.pathname;
+  if (path.endsWith('index.html')){
+    const button = document.getElementById("login-button");
+    if (!localStorage.getItem('token')) {
+      button.innerText = "Log In/Register";
+      button.onclick = function() {
+        window.location.href = 'login.html';
+      };
+    }
+    else {
+      const header = document.querySelector(".header");
+      const historyButton = document.createElement("button");
+      historyButton.id = "history-button";
+      historyButton.innerText = "Browse History";
+      historyButton.onclick = function () {
+        window.location.href = 'history.html';
+      };
+      header.insertBefore(historyButton, button);
+      button.innerText = "Log Out";
+      button.onclick = LogOut;
+    }
+  }
+  else if (path.endsWith('history.html')){
+    getSolutionHistory();
+  }
+}
+window.onload = onPageLoad;
+
+function LogOut(){
+  localStorage.removeItem('token');
+  const button = document.getElementById("login-button");
+  button.innerText = "Log In/Register";
+  button.onclick = function() {
+    window.location.href = 'login.html';
+  };
+  window.location.href = 'index.html';
+  showNotification("Logged Out");
+}
+
 async function SolveRequest() {
   try {
     matrix = getdMatrixFromHtmL();
     usertoken = localStorage.getItem('token');
-    const response = fetch('http://localhost/server/solve', {
+    const response = await fetch('http://localhost/server/solve', {
       method: 'POST',
       headers: {
         // 'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ matrix, usertoken })
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
+    });
+
+    if (response.ok) {
+      const responseData = await response.json();
+      console.log(responseData);
+
+      const solution = responseData.solution;
+      const solutionDiv = document.getElementById("Solution");
+      solutionDiv.innerHTML = `<p>Solution: ${solution.join(", ")}</p>`;
+      showNotification("Successfully solved!");
+    }
   }
   catch (error) {
     error => console.error('Error:', error);
@@ -189,10 +237,10 @@ async function loginUser() {
   if (response.status != 401) {
     const data = await response.text();
     localStorage.setItem('token', data);  // Save the token for future requests
-    console.log('Logged in');
+    showNotification('Logged in');
   } 
   else {
-    console.error("Response is not OK");
+    showNotification("Error while logging in...");
   }
   // window.location.href = 'index.html';
 }
@@ -207,9 +255,45 @@ async function getSolutionHistory() {
   });
   const data = await response.json();
   console.log('Solution History:', data);
+  
+  const historyTableBody = document.getElementById('solution-history');
+  historyTableBody.innerHTML = '';  // Clear the table body
+
+  data.forEach((solution, index) => {
+      const row = document.createElement('tr');
+
+      // Solution ID
+      const solutionIdCell = document.createElement('td');
+      solutionIdCell.innerText = index + 1;
+      row.appendChild(solutionIdCell);
+
+      // Solution Matrix
+      const matrixCell = document.createElement('td');
+      matrixCell.innerText = solution.solutionmatrix;
+      row.appendChild(matrixCell);
+
+      // Solution Result
+      const resultCell = document.createElement('td');
+      resultCell.innerText = solution.solutionresult;
+      row.appendChild(resultCell);
+
+      // Action - Delete Button
+      const actionCell = document.createElement('td');
+      const deleteButton = document.createElement('button');
+      deleteButton.classList.add('delete-btn');
+      deleteButton.innerText = 'Delete';
+      deleteButton.onclick = function() {
+        DeleteSolutionFromHistory(solution.solutionid);
+      };
+      actionCell.appendChild(deleteButton);
+      row.appendChild(actionCell);
+
+      // Append the row to the table
+      historyTableBody.appendChild(row);
+  });
 }
 
-async function DeleteSolutionFromHistory(relativeid) {
+async function DeleteSolutionFromHistory(solutionid) {
   const token = localStorage.getItem('token');
   const response = await fetch('http://localhost/server/delete', {
     method: 'DELETE',
@@ -217,8 +301,26 @@ async function DeleteSolutionFromHistory(relativeid) {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
    },
-    body: relativeid
+    body: solutionid
   });
   const data = await response.text();
   console.log(data);
+  getSolutionHistory();
+}
+
+function showNotification(message) {
+  const notificationContainer = document.getElementById('notification-container');
+  
+  const notification = document.createElement('div');
+  notification.className = 'notification';
+  notification.textContent = message;
+  
+  notificationContainer.appendChild(notification);
+  
+  setTimeout(() => {
+      notification.classList.add('fade-out');
+      setTimeout(() => {
+          notificationContainer.removeChild(notification);
+      }, 500); 
+  }, 2000);
 }

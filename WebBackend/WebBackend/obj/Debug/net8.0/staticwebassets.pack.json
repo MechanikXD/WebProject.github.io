@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
+      "Id": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\history.html",
+      "PackagePath": "staticwebassets\\history.html"
+    },
+    {
       "Id": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },

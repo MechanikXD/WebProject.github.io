@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solution History</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+<div id="notification-container"></div>
+<div class="header">
+    <button id="back-to-main" onclick=goToMain()>Back To Main Page</button>
+</div>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Solution ID</th>
+                <th>Matrix</th>
+                <th>Result</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="solution-history">
+            <!-- History will be dynamically populated here -->
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

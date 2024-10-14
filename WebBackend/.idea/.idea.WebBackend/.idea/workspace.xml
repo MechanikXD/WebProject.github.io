@@ -19,10 +19,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebBackend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebBackend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/Controllers/Solver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/Controllers/Solver.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/Models/Models.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/Models/Models.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.staticwebassets.runtime.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.staticwebassets.runtime.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.dll" afterDir="false" />
@@ -31,10 +31,15 @@
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/apphost.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/ref/WebBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/ref/WebBackend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/refint/WebBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/refint/WebBackend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/staticwebassets.build.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/staticwebassets.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/staticwebassets.development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/staticwebassets.pack.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/staticwebassets.pack.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/staticwebassets/msbuild.WebBackend.Microsoft.AspNetCore.StaticWebAssets.props" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/staticwebassets/msbuild.WebBackend.Microsoft.AspNetCore.StaticWebAssets.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBackend/wwwroot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/wwwroot/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBackend/wwwroot/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/wwwroot/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/wwwroot/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/wwwroot/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx-1.27.2/conf/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx-1.27.2/conf/nginx.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBackend/wwwroot/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/wwwroot/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nginx-1.27.2/logs/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/nginx-1.27.2/logs/access.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx-1.27.2/logs/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/nginx-1.27.2/logs/error.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nginx-1.27.2/logs/nginx.pid" beforeDir="false" afterPath="$PROJECT_DIR$/nginx-1.27.2/logs/nginx.pid" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +87,7 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.WebBackend: Server2">
+  <component name="RunManager" selected=".NET Launch Settings Profile.WebBackend: Server1">
     <configuration name="WebBackend: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebBackend/WebBackend.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -226,6 +231,7 @@
       <workItem from="1728645414900" duration="5313000" />
       <workItem from="1728722910665" duration="4066000" />
       <workItem from="1728747131509" duration="5011000" />
+      <workItem from="1728892035681" duration="6762000" />
     </task>
     <servers />
   </component>

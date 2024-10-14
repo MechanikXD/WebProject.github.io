@@ -106,23 +106,21 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
         // var matrixArray = new List<HistoryResponse>();
         // Store all entries where user index matches foreign key
         await context.Solutions.LoadAsync();
-        var matrixArray = context.Solutions.Local.Where(solutions => solutions.fkclientid == userId.clientid);
+        var matrixArray = context.Solutions.Local.Where(solutions => solutions.fkclientid == userId.clientid).ToArray();
 
         return Ok(JsonConvert.SerializeObject(matrixArray));
     }
 
     [Authorize]
     [HttpDelete("delete")]
-    public async Task<IActionResult> DeleteSolution([FromBody] int relativeId) {
+    public async Task<IActionResult> DeleteSolution([FromBody] int solutionid) {
         var username = User.Identity.Name; // Get the logged-in user's username
         
         // Since index is relative we need user history to determent correct index in database
         var userId = await context.Clients.FirstOrDefaultAsync(c => c.clientusername.Trim() == username.Trim());
         
-        await context.Solutions.LoadAsync();
-        var userSolutions = context.Solutions.Local.Where(source => source.fkclientid == userId.clientid).ToList();
         // Query request
-        context.Solutions.Remove(userSolutions[relativeId]);
+        context.Solutions.Remove(await context.Solutions.FirstOrDefaultAsync(solutions => solutions.solutionid == solutionid));
         await context.SaveChangesAsync();
         
         return Ok("Entry deleted");

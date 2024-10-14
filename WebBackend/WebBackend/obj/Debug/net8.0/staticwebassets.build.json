@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+vqKavYn8vqyvJ7RQjX93P3c2BSnDz9EltdkSjWseG0=",
+  "Hash": "4qlM1p9WwJa3r9UqxQ3SPykwMkEPRv0Te21aPTmrbLs=",
   "Source": "WebBackend",
   "BasePath": "_content/WebBackend",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\history.html",
+      "SourceId": "WebBackend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\",
+      "BasePath": "_content/WebBackend",
+      "RelativePath": "history.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\history.html"
     },
     {
       "Identity": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\index.html",
