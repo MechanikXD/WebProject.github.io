@@ -66,6 +66,9 @@
     </StaticWebAsset>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5821ea7 (Add data visualization, create histoty page)
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\history.html))">
       <SourceType>Package</SourceType>
       <SourceId>WebBackend</SourceId>
@@ -82,8 +85,11 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\history.html))</OriginalItemSpec>
     </StaticWebAsset>
+<<<<<<< HEAD
 =======
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+>>>>>>> 5821ea7 (Add data visualization, create histoty page)
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\index.html))">
       <SourceType>Package</SourceType>
       <SourceId>WebBackend</SourceId>

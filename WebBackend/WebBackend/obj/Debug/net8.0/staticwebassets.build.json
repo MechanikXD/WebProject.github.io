@@ -2,6 +2,7 @@
   "Version": 1,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   "Hash": "4qlM1p9WwJa3r9UqxQ3SPykwMkEPRv0Te21aPTmrbLs=",
 =======
   "Hash": "AuNDJoO0+YiVnipLeTbGGPHtL6DM3G6nd/zG/CdzlDs=",
@@ -9,6 +10,9 @@
 =======
   "Hash": "+vqKavYn8vqyvJ7RQjX93P3c2BSnDz9EltdkSjWseG0=",
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+  "Hash": "4qlM1p9WwJa3r9UqxQ3SPykwMkEPRv0Te21aPTmrbLs=",
+>>>>>>> 5821ea7 (Add data visualization, create histoty page)
   "Source": "WebBackend",
   "BasePath": "_content/WebBackend",
   "Mode": "Default",
@@ -160,6 +164,25 @@
       "OriginalItemSpec": "wwwroot\\history.html"
 =======
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+    },
+    {
+      "Identity": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\history.html",
+      "SourceId": "WebBackend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\",
+      "BasePath": "_content/WebBackend",
+      "RelativePath": "history.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\history.html"
     },
     {
       "Identity": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\index.html",

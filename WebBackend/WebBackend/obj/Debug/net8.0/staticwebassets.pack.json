@@ -23,12 +23,18 @@
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5821ea7 (Add data visualization, create histoty page)
       "Id": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\history.html",
       "PackagePath": "staticwebassets\\history.html"
     },
     {
+<<<<<<< HEAD
 =======
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+>>>>>>> 5821ea7 (Add data visualization, create histoty page)
       "Id": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },

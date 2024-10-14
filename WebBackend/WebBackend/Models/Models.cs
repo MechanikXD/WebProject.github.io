@@ -84,6 +84,7 @@ public class DbSolutionContext(DbContextOptions<DbSolutionContext> options) : Db
 
 public record LoginRequest(string Username, string Password);
 <<<<<<< HEAD
+<<<<<<< HEAD
 public record RegisterRequest(string Username, string Password);
 <<<<<<< HEAD
 =======
@@ -94,3 +95,6 @@ public record HistoryRequest(int UserId);
 public record HistoryRequest(int UserId);
 public record HistoryResponse(string Matrix, string Solution);
 >>>>>>> 29a9675 (Implement History System)
+=======
+public record RegisterRequest(string Username, string Password);
+>>>>>>> 5821ea7 (Add data visualization, create histoty page)

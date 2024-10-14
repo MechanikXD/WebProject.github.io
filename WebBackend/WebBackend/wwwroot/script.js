@@ -166,6 +166,9 @@ function getdMatrixFromHtmL() {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5821ea7 (Add data visualization, create histoty page)
 function onPageLoad(){
   const path = window.location.pathname;
   if (path.endsWith('index.html')){
@@ -275,16 +278,24 @@ async function SolveRequest() {
   try {
     matrix = getdMatrixFromHtmL();
     usertoken = localStorage.getItem('token');
-    const response = fetch('http://localhost/server/solve', {
+    const response = await fetch('http://localhost/server/solve', {
       method: 'POST',
       headers: {
         // 'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ matrix, usertoken })
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
+    });
+
+    if (response.ok) {
+      const responseData = await response.json();
+      console.log(responseData);
+
+      const solution = responseData.solution;
+      const solutionDiv = document.getElementById("Solution");
+      solutionDiv.innerHTML = `<p>Solution: ${solution.join(", ")}</p>`;
+      showNotification("Successfully solved!");
+    }
   }
   catch (error) {
     error => console.error('Error:', error);
@@ -357,10 +368,10 @@ async function loginUser(username, password) {
   if (response.status != 401) {
     const data = await response.text();
     localStorage.setItem('token', data);  // Save the token for future requests
-    console.log('Logged in');
+    showNotification('Logged in');
   } 
   else {
-    console.error("Response is not OK");
+    showNotification("Error while logging in...");
   }
   // window.location.href = 'index.html';
 >>>>>>> 790bda1 (implement authorization system)
@@ -385,6 +396,9 @@ async function getSolutionHistory() {
   const data = await response.json();
   console.log('Solution History:', data);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5821ea7 (Add data visualization, create histoty page)
   
   const historyTableBody = document.getElementById('solution-history');
   historyTableBody.innerHTML = '';  // Clear the table body
@@ -424,10 +438,14 @@ async function getSolutionHistory() {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 async function DeleteSolutionFromHistory(solutionid) {
 =======
 async function DeleteSolutionFromHistory(relativeid) {
 >>>>>>> 29a9675 (Implement History System)
+=======
+async function DeleteSolutionFromHistory(solutionid) {
+>>>>>>> 5821ea7 (Add data visualization, create histoty page)
   const token = localStorage.getItem('token');
   const response = await fetch('http://localhost/server/delete', {
     method: 'DELETE',
@@ -435,6 +453,7 @@ async function DeleteSolutionFromHistory(relativeid) {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
    },
+<<<<<<< HEAD
 <<<<<<< HEAD
     body: solutionid
   });
@@ -481,3 +500,28 @@ function IsValidMatrix(matrix){
   console.log(data);
 }
 >>>>>>> 29a9675 (Implement History System)
+=======
+    body: solutionid
+  });
+  const data = await response.text();
+  console.log(data);
+  getSolutionHistory();
+}
+
+function showNotification(message) {
+  const notificationContainer = document.getElementById('notification-container');
+  
+  const notification = document.createElement('div');
+  notification.className = 'notification';
+  notification.textContent = message;
+  
+  notificationContainer.appendChild(notification);
+  
+  setTimeout(() => {
+      notification.classList.add('fade-out');
+      setTimeout(() => {
+          notificationContainer.removeChild(notification);
+      }, 500); 
+  }, 2000);
+}
+>>>>>>> 5821ea7 (Add data visualization, create histoty page)

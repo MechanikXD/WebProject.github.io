@@ -19,6 +19,7 @@ using System.Reflection;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5821ea7e863276b3e528bcb166993140526d9520")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abb77ee4e2add76f5f0957a02862efc65315618d")]
@@ -38,6 +39,9 @@ using System.Reflection;
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+790bda1541ac163d3ce80b85b3887f5f806d3239")]
 >>>>>>> 29a9675 (Implement History System)
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29a96752f79e163fb4ea313280d7725707202ed1")]
+>>>>>>> 5821ea7 (Add data visualization, create histoty page)
 [assembly: System.Reflection.AssemblyProductAttribute("WebBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
