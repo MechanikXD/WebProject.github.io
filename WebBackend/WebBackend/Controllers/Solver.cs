@@ -59,6 +59,7 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
             goodResponse = false;
         }
 
+<<<<<<< HEAD
         // If user has token (logged in) - add this solution to database (as history)
         if (request.UserToken != null) {
             // Decodes the token
@@ -99,11 +100,13 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
         // Solve system
         var solution = SolveSystem(request.Matrix);
         
+=======
+>>>>>>> 387a279 (Add error messages and data validation)
         // If user has token (logged in) - add this solution to database (as history)
         if (request.UserToken != null) {
             // Decodes the token
             var tokenHandler = new JwtSecurityTokenHandler();
-            var jwtToken = tokenHandler.ReadJwtToken(request.UserToken); 
+            var jwtToken = tokenHandler.ReadJwtToken(request.UserToken);
 
             // Extract the user ID from the token's claims
             var username = jwtToken?.Claims
@@ -112,7 +115,14 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
             if (client == null) {
                 throw new Exception("No client was found in database but token was provided");
             }
-            
+            await context.Solutions.LoadAsync();
+            var clientSolutionsCount =
+                context.Solutions.Local.Count(clientSolutions => clientSolutions.fkclientid == client.clientid);
+            if (clientSolutionsCount > 100) {
+                responseMessage = "Too many solutions are stored, please clean your history";
+                goodResponse = false;
+            }
+
             // Create solution to store in database
             var savedSolution = new SavedSolutions {
                 fkclientid = client.clientid,
@@ -120,16 +130,21 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
                 solutionresult = System.Text.Json.JsonSerializer.Serialize(solution),
                 solutionmatrixlength = request.Matrix.Length
             };
+<<<<<<< HEAD
             
 <<<<<<< HEAD
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
 =======
+=======
+
+>>>>>>> 387a279 (Add error messages and data validation)
             // Add solution to database
 >>>>>>> 29a9675 (Implement History System)
             await context.AddAsync(savedSolution);
             await context.SaveChangesAsync();
         }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         return goodResponse ? Ok(new SolveResponse(solution)) : Ok(responseMessage);
     }
@@ -157,32 +172,37 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
         }
 =======
         return Ok(new SolveResponse(solution));
+=======
+        return goodResponse ? Ok(new SolveResponse(solution)) : Ok(responseMessage);
+>>>>>>> 387a279 (Add error messages and data validation)
     }
-    
-    // Debug task, never actually used in frontend
-    [HttpGet("{id:int}")]
-    public async Task<IActionResult> GetSolution(int id) {
-        Console.WriteLine($"Received GET request for {id}id");
-        var solution = await context.FindAsync(typeof(SavedSolutions), id);
 
-        if (solution == null)
-            return NotFound();
-        solution = (SavedSolutions)solution;
-
-        return Ok(solution);
-    }
-    
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request) {
-        // Hash password for safety
-        var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
-        var newUser = new Client { clientusername = request.Username, clientpassword = passwordHash };
-        // Add user into database
-        await context.AddAsync(newUser);
-        await context.SaveChangesAsync();
+        try {
+            // Hash password for safety
+            await context.Clients.LoadAsync();
+            if (await context.Clients.FirstOrDefaultAsync(client => client.clientusername == request.Username) !=
+                null) {
+                throw new NullReferenceException("User with the same name already exists");
+            }
 
+<<<<<<< HEAD
         return Ok("User registered successfully");
 >>>>>>> 758e2aa (Rearenge Project. Implement Entity Framework functional. Make server actually respond to requests)
+=======
+            var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
+            var newUser = new Client { clientusername = request.Username, clientpassword = passwordHash };
+            // Add user into database
+            await context.AddAsync(newUser);
+            await context.SaveChangesAsync();
+
+            return Ok("User registered successfully");
+        }
+        catch (Exception error) {
+            return Ok(error.Message);
+        }
+>>>>>>> 387a279 (Add error messages and data validation)
     }
 
     [HttpPost("login")]
@@ -252,10 +272,14 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
     [HttpGet("history")]
     public async Task<IActionResult> GetSolutionHistory() {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 387a279 (Add error messages and data validation)
         var username = User.Identity?.Name; // Get the logged-in user's username
         if (username == null) {
             throw new NullReferenceException("No username field in token was found");
         }
+<<<<<<< HEAD
         var userId = await context.Clients.FirstOrDefaultAsync(c => c.clientusername.Trim() == username.Trim());
 
         if (userId == null) {
@@ -327,8 +351,13 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
 =======
         var username = User.Identity.Name; // Get the logged-in user's username
         
+=======
+>>>>>>> 387a279 (Add error messages and data validation)
         var userId = await context.Clients.FirstOrDefaultAsync(c => c.clientusername.Trim() == username.Trim());
-        // var matrixArray = new List<HistoryResponse>();
+
+        if (userId == null) {
+            throw new NullReferenceException("No user with such username was found");
+        }
         // Store all entries where user index matches foreign key
         await context.Solutions.LoadAsync();
         var matrixArray = context.Solutions.Local.Where(solutions => solutions.fkclientid == userId.clientid).ToArray();
@@ -339,16 +368,40 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
     [Authorize]
     [HttpDelete("delete")]
     public async Task<IActionResult> DeleteSolution([FromBody] int solutionid) {
-        var username = User.Identity.Name; // Get the logged-in user's username
-        
-        // Since index is relative we need user history to determent correct index in database
-        var userId = await context.Clients.FirstOrDefaultAsync(c => c.clientusername.Trim() == username.Trim());
-        
         // Query request
-        context.Solutions.Remove(await context.Solutions.FirstOrDefaultAsync(solutions => solutions.solutionid == solutionid));
+        context.Solutions.Remove(await context.Solutions.FirstOrDefaultAsync(solutions => solutions.solutionid == solutionid) 
+                                 ?? throw new NullReferenceException("No solution with such ID was found"));
         await context.SaveChangesAsync();
         
         return Ok("Entry deleted");
+    }
+
+    private (bool isValid, string message) IsValidMatrix(double[][] matrix) {
+        var reason = "Matrix is valid";
+        var allValuesAreValid = true;
+        if (matrix.Length + 1 == matrix[0].Length && matrix.Length is > 1 and < 11) {
+            foreach (var t in matrix) {
+                for (var j = 0; j < matrix[0].Length; j++) {
+                    if (!double.IsNaN(t[j])) {
+                        continue;
+                    }
+
+                    allValuesAreValid = false;
+                    reason = "One of the cell contain NaN";
+                    break;
+                }
+
+                if (!allValuesAreValid) {
+                    break;
+                }
+            }
+        }
+        else {
+            allValuesAreValid = false;
+            reason = "Bad matrix size";
+        }
+
+        return (allValuesAreValid, reason);
     }
 
     private string GenerateJwtToken(Client client) {
@@ -389,6 +442,7 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
             }
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         var swapArray = new List<(int fromIndex, int toIndex)>();
         var matrixSize = matrix.Length;
@@ -423,11 +477,35 @@ public class ServerController(DbSolutionContext context, IConfiguration configur
         var matrixSize = matrix.GetLength(0);
 =======
         
+=======
+
+        var swapArray = new List<(int fromIndex, int toIndex)>();
+>>>>>>> 387a279 (Add error messages and data validation)
         var matrixSize = matrix.Length;
 >>>>>>> 29a9675 (Implement History System)
         var result = new double[matrixSize];
 
         for (var i = 0; i < matrixSize; i++) {
+            if (matrixCopy[i, i] == 0) {
+                var rowsWereSwapped = false;
+                for (var k = i + 1; k < matrixSize; k++) {
+                    if (matrixCopy[i, k] == 0) {
+                        continue;
+                    }
+
+                    for (var j = 0; j < matrixSize + 1; j++) {
+                        (matrixCopy[i, j], matrixCopy[k, j]) = (matrixCopy[k, j], matrixCopy[i, j]);
+                    }
+                    swapArray.Add((i, k));
+                    rowsWereSwapped = true;
+                    break;
+                }
+
+                if (!rowsWereSwapped) {
+                    return Array.Empty<double>();
+                }
+            }
+            
             for (var k = i + 1; k < matrixSize; k++) {
                 var factor = matrixCopy[k, i] / matrixCopy[i, i];
                 for (var j = i; j <= matrixSize; j++) {

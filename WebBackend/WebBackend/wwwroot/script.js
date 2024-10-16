@@ -237,6 +237,7 @@ async function SolveRequest() {
           showNotification(await response.text());
         }
       }
+<<<<<<< HEAD
     }
     catch (error) {
       error => console.error('Error:', error);
@@ -295,11 +296,13 @@ async function SolveRequest() {
       const solutionDiv = document.getElementById("Solution");
       solutionDiv.innerHTML = `<p>Solution: ${solution.join(", ")}</p>`;
       showNotification("Successfully solved!");
+=======
+>>>>>>> 387a279 (Add error messages and data validation)
     }
+    catch (error) {
+      error => console.error('Error:', error);
+    };
   }
-  catch (error) {
-    error => console.error('Error:', error);
-  };
 }
 
 async function registerUser() {
@@ -489,6 +492,7 @@ function IsValidMatrix(matrix){
     })
   });
   return true;
+<<<<<<< HEAD
 }
 =======
 }
@@ -525,3 +529,6 @@ function showNotification(message) {
   }, 2000);
 }
 >>>>>>> 5821ea7 (Add data visualization, create histoty page)
+=======
+}
+>>>>>>> 387a279 (Add error messages and data validation)

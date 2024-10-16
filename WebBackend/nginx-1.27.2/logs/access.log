@@ -253,6 +253,9 @@
 127.0.0.1 - - [12/Oct/2024:19:55:43 +0300] "OPTIONS /server/delete HTTP/1.1" 204 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"
 127.0.0.1 - - [12/Oct/2024:19:55:45 +0300] "DELETE /server/delete HTTP/1.1" 200 23 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 387a279 (Add error messages and data validation)
 127.0.0.1 - - [14/Oct/2024:10:39:24 +0300] "OPTIONS /server/solve HTTP/1.1" 204 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"
 127.0.0.1 - - [14/Oct/2024:10:39:32 +0300] "POST /server/solve HTTP/1.1" 502 497 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"
 127.0.0.1 - - [14/Oct/2024:10:52:08 +0300] "OPTIONS /server/solve HTTP/1.1" 204 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"
@@ -515,9 +518,12 @@
 127.0.0.1 - - [16/Oct/2024:10:37:01 +0300] "DELETE /server/delete HTTP/1.1" 200 23 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"
 127.0.0.1 - - [16/Oct/2024:10:37:01 +0300] "OPTIONS /server/history HTTP/1.1" 204 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"
 127.0.0.1 - - [16/Oct/2024:10:37:01 +0300] "GET /server/history HTTP/1.1" 200 272 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"
+<<<<<<< HEAD
 =======
 >>>>>>> 933dc1f (Implement nginx)
 =======
 >>>>>>> 29a9675 (Implement History System)
 =======
 >>>>>>> 5821ea7 (Add data visualization, create histoty page)
+=======
+>>>>>>> 387a279 (Add error messages and data validation)

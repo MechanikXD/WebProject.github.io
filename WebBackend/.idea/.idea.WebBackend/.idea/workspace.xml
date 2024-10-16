@@ -30,6 +30,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebBackend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebBackend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/Controllers/Solver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/Controllers/Solver.cs" afterDir="false" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.pdb" afterDir="false" />
@@ -75,18 +76,23 @@
 =======
       <change beforePath="$PROJECT_DIR$/WebBackend/Models/Models.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/Models/Models.cs" afterDir="false" />
 >>>>>>> 5821ea7 (Add data visualization, create histoty page)
+=======
+>>>>>>> 387a279 (Add error messages and data validation)
       <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.staticwebassets.runtime.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/bin/Debug/net8.0/WebBackend.staticwebassets.runtime.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/WebBackend.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/apphost.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/ref/WebBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/ref/WebBackend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/refint/WebBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/Debug/net8.0/refint/WebBackend.dll" afterDir="false" />
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -101,11 +107,15 @@
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/WebBackend.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/WebBackend.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/WebBackend.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/WebBackend.csproj.nuget.g.targets" afterDir="false" />
 >>>>>>> 2227da6 (Move project to Web application type)
+=======
+      <change beforePath="$PROJECT_DIR$/WebBackend/obj/WebBackend.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/WebBackend.csproj.nuget.dgspec.json" afterDir="false" />
+>>>>>>> 387a279 (Add error messages and data validation)
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/rider.project.model.nuget.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/obj/rider.project.restore.info" afterDir="false" />
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/WebBackend/wwwroot/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/wwwroot/script.js" afterDir="false" />
@@ -134,7 +144,11 @@
 >>>>>>> 5821ea7 (Add data visualization, create histoty page)
       <change beforePath="$PROJECT_DIR$/WebBackend/wwwroot/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/wwwroot/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebBackend/wwwroot/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/wwwroot/styles.css" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/WebBackend/wwwroot/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebBackend/wwwroot/script.js" afterDir="false" />
+>>>>>>> 387a279 (Add error messages and data validation)
       <change beforePath="$PROJECT_DIR$/nginx-1.27.2/logs/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/nginx-1.27.2/logs/access.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx-1.27.2/logs/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/nginx-1.27.2/logs/error.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nginx-1.27.2/logs/nginx.pid" beforeDir="false" afterPath="$PROJECT_DIR$/nginx-1.27.2/logs/nginx.pid" afterDir="false" />
 >>>>>>> 29a9675 (Implement History System)
     </list>
@@ -411,6 +425,7 @@
       <workItem from="1728977266360" duration="2095000" />
       <workItem from="1728986419623" duration="788000" />
       <workItem from="1729056416655" duration="6907000" />
+<<<<<<< HEAD
 =======
 >>>>>>> 2227da6 (Move project to Web application type)
 =======
@@ -424,6 +439,8 @@
 =======
       <workItem from="1728892035681" duration="6762000" />
 >>>>>>> 5821ea7 (Add data visualization, create histoty page)
+=======
+>>>>>>> 387a279 (Add error messages and data validation)
     </task>
     <servers />
   </component>
