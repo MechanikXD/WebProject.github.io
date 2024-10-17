@@ -177,31 +177,38 @@ function LogOut(){
 }
 
 async function SolveRequest() {
-  try {
-    matrix = getdMatrixFromHtmL();
-    usertoken = localStorage.getItem('token');
-    const response = await fetch('http://localhost/server/solve', {
-      method: 'POST',
-      headers: {
-        // 'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ matrix, usertoken })
-    });
-
-    if (response.ok) {
-      const responseData = await response.json();
-      console.log(responseData);
-
-      const solution = responseData.solution;
-      const solutionDiv = document.getElementById("Solution");
-      solutionDiv.innerHTML = `<p>Solution: ${solution.join(", ")}</p>`;
-      showNotification("Successfully solved!");
+  matrix = getdMatrixFromHtmL();
+  if (IsValidMatrix(matrix)) {
+    try {
+      usertoken = localStorage.getItem('token');
+      const response = await fetch('http://localhost/server/solve', {
+        method: 'POST',
+        headers: {
+          // 'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ matrix, usertoken })
+      });
+      
+      if (response.ok) {
+        if (response.headers.get('Content-Type').includes('application/json')){
+          const responseData = await response.json();
+          console.log(responseData);
+  
+          const solution = responseData.solution;
+          const solutionDiv = document.getElementById("Solution");
+          solutionDiv.innerHTML = `<p>Solution: ${solution.join(", ")}</p>`;
+          showNotification("Successfully solved!");
+        }
+        else {
+          showNotification(await response.text());
+        }
+      }
     }
+    catch (error) {
+      error => console.error('Error:', error);
+    };
   }
-  catch (error) {
-    error => console.error('Error:', error);
-  };
 }
 
 async function registerUser() {
@@ -323,4 +330,16 @@ function showNotification(message) {
           notificationContainer.removeChild(notification);
       }, 500); 
   }, 2000);
+}
+
+function IsValidMatrix(matrix){
+  matrix.forEach(array => {
+    array.forEach(data => {
+      if (isNaN(data)){
+        showNotification("All cells must be filled!");
+        return false;
+      }
+    })
+  });
+  return true;
 }
