@@ -1,0 +1,61 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\WebProject\\WebBackend\\WebBackend\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebBackend.bundle.scp.css",
+      "PackagePath": "staticwebassets\\WebBackend.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\history.html",
+      "PackagePath": "staticwebassets\\history.html"
+    },
+    {
+      "Id": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\login.html",
+      "PackagePath": "staticwebassets\\login.html"
+    },
+    {
+      "Id": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\script.js",
+      "PackagePath": "staticwebassets\\script.js"
+    },
+    {
+      "Id": "D:\\WebProject\\WebBackend\\WebBackend\\wwwroot\\styles.css",
+      "PackagePath": "staticwebassets\\styles.css"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.WebBackend.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.WebBackend.props",
+      "PackagePath": "build\\WebBackend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.WebBackend.props",
+      "PackagePath": "buildMultiTargeting\\WebBackend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.WebBackend.props",
+      "PackagePath": "buildTransitive\\WebBackend.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
