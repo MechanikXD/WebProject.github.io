@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.header {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.login-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+.container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 60px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 60px;
+    margin: 0 5px;
+    padding: 5px;
+    text-align: center;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    margin: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#result {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+th:nth-child(1), td:nth-child(1) {
+    width: 5%;
+}
+th:nth-child(2), td:nth-child(2) {
+    width: 60%;
+}
+th:nth-child(3), td:nth-child(3) {
+    width: 25%;
+}
+th:nth-child(4), td:nth-child(4) {
+    width: 10%;
+}
+
+.delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}
+
+.table-container {
+    margin-top: 100px;
+    max-height: 700px;
+    width: 1500px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+}
+
+#notification-container {
+    position: fixed;
+    top: 20px;
+    left: 50%; 
+    transform: translateX(-50%); 
+    z-index: 1000; 
+    width: 300px; 
+    display: flex; 
+    flex-direction: column; 
+}
+
+.notification {
+    background-color: #f0f8ff; 
+    border: 1px solid #007bff;
+    color: #007bff; 
+    padding: 10px; 
+    margin: 5px 0;
+    border-radius: 5px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.5s ease; 
+    opacity: 1; 
+}
+
+.fade-out {
+    opacity: 0;
+}
